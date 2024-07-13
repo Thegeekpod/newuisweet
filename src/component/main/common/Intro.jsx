@@ -8,13 +8,12 @@ const Intro = () => {
       <div className="aspect-7/4 overflow-hidden rounded-lg bg-light text-center dark:bg-dark-2">
       <div>
           <video
-            width="400"
-            height="400"
+             className="object-contain w-full h-auto rounded"
             autoPlay
             loop
             muted
             preload="none"
-            controls
+            
           >
             <source src="/assets/video/homebanner.mp4" type="video/mp4" />
             Your browser does not support the video tag.
