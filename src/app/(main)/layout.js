@@ -2,6 +2,7 @@
 import { lazy } from "react";
 import "./globals.css";
 const Main = lazy(() => import("./main"));
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: "Create Next App",
@@ -10,6 +11,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <Main >{children}</Main>
+    <Main >
+      <SpeedInsights/>
+      {children}
+      </Main>
   );
 }
