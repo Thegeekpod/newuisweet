@@ -9,7 +9,7 @@ const Articles = () => {
         My Recent Article and Publications
       </h2>
       <p className="mt-4 text-lg text-muted dark:text-light/70">
-        I'm here to help if you're searching for a product designer to bring
+        I{"'"}m here to help if you{"'"}re searching for a product designer to bring
         your idea to life or a design partner to help take your business to the
         next level.
       </p>
