@@ -5,10 +5,10 @@ const Contact = () => {
     <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
     <div className="">
       <h2 className="text-3xl font-semibold leading-tight text-dark dark:text-light lg:text-[40px] lg:leading-tight">
-        Let's 👋 <span className="text-primary">Work</span> Together
+        Let{"'"}s 👋 <span className="text-primary">Work</span> Together
       </h2>
       <p className="mt-4 text-lg text-muted dark:text-light/70">
-        I'm here to help if you're searching for a product designer to bring your
+        I{"'"}m here to help if you{"'"}re searching for a product designer to bring your
         idea to life or a design partner to help take your business to the next
         level.
       </p>
@@ -257,7 +257,7 @@ const Contact = () => {
           <div className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
             <div className="px-6 pb-5">
               <p className="text-base xl:text-lg">
-                I'm here to help if you're searching for a product designer to
+                I{"'"}m here to help if you{"'"}re searching for a product designer to
                 bring your idea to life or a design partner to help take your
                 business to the next level.
               </p>
@@ -298,7 +298,7 @@ const Contact = () => {
           <div className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300">
             <div className="px-6 pb-5">
               <p className="text-base xl:text-lg">
-                I'm here to help if you're searching for a product designer to
+                I{"'"}m here to help if you{"'"}re searching for a product designer to
                 bring your idea to life or a design partner to help take your
                 business to the next level.
               </p>
@@ -339,7 +339,7 @@ const Contact = () => {
           <div className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
             <div className="px-6 pb-5">
               <p className="text-base xl:text-lg">
-                I'm here to help if you're searching for a product designer to
+                I{"'"}m here to help if you{"'"}re searching for a product designer to
                 bring your idea to life or a design partner to help take your
                 business to the next level.
               </p>
@@ -380,7 +380,7 @@ const Contact = () => {
           <div className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
             <div className="px-6 pb-5">
               <p className="text-base xl:text-lg">
-                I'm here to help if you're searching for a product designer to
+                I{"'"}m here to help if you{"'"}re searching for a product designer to
                 bring your idea to life or a design partner to help take your
                 business to the next level.
               </p>
@@ -421,7 +421,7 @@ const Contact = () => {
           <div className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
             <div className="px-6 pb-5">
               <p className="text-base xl:text-lg">
-                I'm here to help if you're searching for a product designer to
+                I{"'"}m here to help if you{"'"}re searching for a product designer to
                 bring your idea to life or a design partner to help take your
                 business to the next level.
               </p>

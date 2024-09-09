@@ -27,20 +27,20 @@ const page = () => {
         Mastering the Art of Email Marketing tips for Success pattern of living,
         including their behaviors, habits, and daily routines. It encompasses
         everything from their diet, exercise routines, and sleep habits to their
-        recreational activities, social interactions, and work habits. A person's
+        recreational activities, social interactions, and work habits. A person{"'"}s
         lifestyle plays a significant role in determining their overall
         well-being, including their physical and mental health, as well as their
         happiness and satisfaction with life. A healthy lifestyle, which includes
         a balanced diet, regular exercise, and a healthy sleep pattern, can
-        improve an individual's quality of life
+        improve an individual{"'"}s quality of life
       </p>
       <p>
         A healthy lifestyle, which includes a balanced diet, regular exercise, and
-        a healthy sleep pattern, can improve an individual's quality of life and
+        a healthy sleep pattern, can improve an individual{"'"}s quality of life and
         reduce the risk of chronic diseases. On the other hand, unhealthy
         lifestyle habits, such as smoking, excessive alcohol consumption, and a
-        sedentary lifestyle, can have negative impacts on one's health and
-        well-being. Thus, making intentional choices about one's lifestyle can
+        sedentary lifestyle, can have negative impacts on one{"'"}s health and
+        well-being. Thus, making intentional choices about one{"'"}s lifestyle can
         lead to improved health, happiness, and longevity.
       </p>
       <blockquote>
@@ -53,36 +53,36 @@ const page = () => {
       <p>
         The Role of Storytelling in Email Marketing CampaignsEmail Marketing
         Automation: Streamlining Your Campaigns for Results can improve an
-        individual's quality of life and reduce the risk of chronic diseases. On
+        individual{"'"}s quality of life and reduce the risk of chronic diseases. On
         the other hand, unhealthy lifestyle habits, such as smoking, excessive
         alcohol consumption, and a sedentary lifestyle, can have negative impacts
-        on one's health and well-being. Thus, making intentional choices about
-        one's lifestyle can lead to improved health, happiness, and longevity
+        on one{"'"}s health and well-being. Thus, making intentional choices about
+        one{"'"}s lifestyle can lead to improved health, happiness, and longevity
       </p>
       <h2>The Role of Storytelling in Email Marketing</h2>
       <p>
-        Lifestyle refers to an individual's habits, behaviors, and patterns of
-        living. encompasses all aspects of a person's daily life, including their
-        diet, exercise routine Lifestyle choices can also impact a person's
-        financial, social, and environmental well-being. A person's lifestyle
+        Lifestyle refers to an individual{"'"}s habits, behaviors, and patterns of
+        living. encompasses all aspects of a person{"'"}s daily life, including their
+        diet, exercise routine Lifestyle choices can also impact a person{"'"}s
+        financial, social, and environmental well-being. A person{"'"}s lifestyle
         plays a major role in determining their overall health, happy happiness,
         and longevity.
       </p>
       <ul>
         <li>
-          Lifestyle refers to an individual's habits, behaviors, and patterns of
+          Lifestyle refers to an individual{"'"}s habits, behaviors, and patterns of
           living.
         </li>
         <li>
-          encompasses all aspects of a person's daily life, including their diet,
+          encompasses all aspects of a person{"'"}s daily life, including their diet,
           exercise routine
         </li>
         <li>
-          Lifestyle choices can also impact a person's financial, social, and
+          Lifestyle choices can also impact a person{"'"}s financial, social, and
           environmental well-being.
         </li>
         <li>
-          A person's lifestyle plays a major role in determining their overall
+          A person{"'"}s lifestyle plays a major role in determining their overall
           health, happi
         </li>
       </ul>
