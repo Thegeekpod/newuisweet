@@ -2,8 +2,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { addBlog } from '../function/Add';
+ import { unstable_noStore as noStore }  from 'next/cache';
 
 const BlogForm = () => {
+  noStore();
   const [formData, setFormData] = useState({
     title: '',
     description: '',

@@ -1,8 +1,9 @@
 import GetArticles from '@/component/main/pages/artical/GetArticles'
 import React from 'react'
 import prisma from '../../../../lib/prisma'
-
+import { unstable_noStore as noStore } from 'next/cache';
 const Articles = async() => {
+  noStore();
   const data = await prisma.blogs.findMany({
     orderBy: {
       id: 'desc',
