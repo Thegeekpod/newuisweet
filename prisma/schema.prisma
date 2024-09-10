@@ -14,3 +14,17 @@ model Admin {
   password String
   createdAt DateTime @default(now())
 }
+
+model Blogs {
+  id              Int      @id @default(autoincrement())
+  title           String
+  description     String
+  image           String?
+  slug            String   @unique
+  tag             String?
+  seoTitle        String?
+  seoDescription  String?
+  seoKeywords     String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}

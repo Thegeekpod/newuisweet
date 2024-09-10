@@ -15,7 +15,7 @@ export default function Login() {
 
     try {
       const admin = await loginUser(email, password);
-      console.log(admin.token); // Check if token is received correctly
+      // console.log(admin.token); // Check if token is received correctly
       if (admin && admin.token) {
         document.cookie = cookie.serialize('session', admin.token, {
           // Note: httpOnly attribute is omitted

@@ -10,6 +10,8 @@
     "vercel-build": "prisma generate && next build"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.0.0",
+    "@heroicons/react": "^2.1.5",
     "@prisma/client": "^5.19.1",
     "@vercel/speed-insights": "^1.0.12",
     "bcrypt": "^5.1.1",
@@ -20,9 +22,11 @@
     "jsonwebtoken": "^9.0.2",
     "next": "^14.2.5",
     "next-themes": "^0.3.0",
+    "path": "^0.12.7",
     "react": "^18",
     "react-dom": "^18",
     "react-loading-skeleton": "^3.4.0",
+    "sweetalert2": "^11.14.0",
     "use-local-storage-state": "^19.3.1"
   },
   "devDependencies": {

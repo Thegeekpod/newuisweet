@@ -20,7 +20,7 @@ export async function middleware(request) {
     try {
       // Verify the token using `jose`
       const { payload } = await jwtVerify(token, new TextEncoder().encode(JWT_SECRET));
-      console.log('Token payload:', payload);
+      // console.log('Token payload:', payload);
 
       // If the user is trying to access '/admin/login' or '/admin', redirect to '/admin/dashboard'
       if (pathname === '/admin/login' || pathname === '/admin') {
