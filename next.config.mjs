@@ -1,20 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    async headers() {
+    
+      async headers() {
         return [
           {
-            source: '/public/:path*',
+            source: '/blogimage/:path*',
             headers: [
               {
                 key: 'Cache-Control',
-                value: 'no-store, no-cache, must-revalidate, proxy-revalidate',
+                value: 'no-store',
               },
             ],
           },
         ];
       },
-      
+    
   };
   
   export default nextConfig;

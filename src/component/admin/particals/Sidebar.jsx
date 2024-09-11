@@ -6,7 +6,7 @@ import { useSelectedLayoutSegment } from 'next/navigation'
 
 export const Sidebar = () => {
   const router = useSelectedLayoutSegment()
-  console.log(router)
+  
   return (
     <aside className="w-64 bg-gray-800 text-white min-h-screen p-4">
       <h2 className="text-xl font-bold mb-6">Admin Panel</h2>

@@ -1,12 +1,14 @@
 "use client";
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { addBlog } from '../function/Add';
+import { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import { Editor } from '@tinymce/tinymce-react'; // Import TinyMCE Editor
 import { unstable_noStore as noStore } from 'next/cache';
-import { Editor } from '@tinymce/tinymce-react';
+import { getBlogById, editBlog } from '../../function/Add';
 
-const BlogForm = () => {
+const EditBlog = () => {
   noStore();
+  const router = useRouter();
+  const { blogId } = useParams();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -16,9 +18,30 @@ const BlogForm = () => {
     seoDescription: '',
     seoKeywords: '',
   });
-
   const [notification, setNotification] = useState('');
-  const router = useRouter();
+  const [currentImage, setCurrentImage] = useState('');
+
+  useEffect(() => {
+    const fetchBlogData = async () => {
+      try {
+        const response = await getBlogById(blogId);
+        const blog = response;
+        setFormData({
+          title: blog.title,
+          description: blog.description,
+          image: null,
+          tag: blog.tag,
+          seoTitle: blog.seoTitle,
+          seoDescription: blog.seoDescription,
+          seoKeywords: blog.seoKeywords,
+        });
+        setCurrentImage(blog.image);
+      } catch (error) {
+        console.error('Failed to fetch blog data:', error);
+      }
+    };
+    fetchBlogData();
+  }, [blogId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,14 +74,14 @@ const BlogForm = () => {
     });
 
     try {
-      await addBlog(formDataToSend);
-      setNotification('Blog added successfully!');
+      await editBlog(formDataToSend, blogId);
+      setNotification('Blog updated successfully!');
       setTimeout(() => {
         setNotification('');
-        router.push('/admin/dashboard/blog'); // Navigate to the desired page
-      }, 2000); // Adjust delay as needed
+        router.push('/admin/dashboard/blog');
+      }, 2000);
     } catch (error) {
-      setNotification('Failed to add blog. Please try again.');
+      setNotification('Failed to update blog. Please try again.');
     }
   };
 
@@ -71,29 +94,19 @@ const BlogForm = () => {
       )}
       <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded shadow-md mx-auto mt-8">
         {Object.entries(formData).map(([name, value]) => (
-          name !== 'image' && name !== 'description' && (
+          name !== 'image' && name !== 'description' && ( // Exclude 'description' for TinyMCE
             <div key={name}>
               <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
                 {name.charAt(0).toUpperCase() + name.slice(1).replace(/([A-Z])/g, ' $1')}
               </label>
-              {name === 'seoDescription' ? (
-                <textarea
-                  name={name}
-                  id={name}
-                  value={value}
-                  onChange={handleChange}
-                  className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-              ) : (
-                <input
-                  type="text"
-                  name={name}
-                  id={name}
-                  value={value}
-                  onChange={handleChange}
-                  className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-              )}
+              <input
+                type="text"
+                name={name}
+                id={name}
+                value={value}
+                onChange={handleChange}
+                className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
             </div>
           )
         ))}
@@ -118,6 +131,13 @@ const BlogForm = () => {
           <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-1">
             Image
           </label>
+          {currentImage && (
+            <img
+              src={currentImage}
+              alt="Current Blog Image"
+              className="mb-2 h-32 w-auto object-cover"
+            />
+          )}
           <input
             type="file"
             name="image"
@@ -127,11 +147,11 @@ const BlogForm = () => {
           />
         </div>
         <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors">
-          Add Blog
+          Update Blog
         </button>
       </form>
     </div>
   );
 };
 
-export default BlogForm;
+export default EditBlog;

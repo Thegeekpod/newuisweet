@@ -13,7 +13,7 @@ export async function middleware(request) {
   const token = parsedCookies.session || '';
 
   // Log the token for debugging
-  console.log('Token:', token);
+  // console.log('Token:', token);
 
   // Check if the request path starts with '/admin'
   if (pathname.startsWith('/admin')) {
