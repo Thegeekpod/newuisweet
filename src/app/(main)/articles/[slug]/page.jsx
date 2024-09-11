@@ -2,13 +2,12 @@ import { unstable_noStore as noStore } from 'next/cache';
 import prisma from '../../../../../lib/prisma';
 import Link from 'next/link';
 
-
 export async function generateMetadata({ params }) {
   // Disable caching for this page
   noStore();
 
+  const baseurl = process.env.BASE_URL || 'http://localhost:3000';
   const slug = params.slug;
-   // Use environment variable for the base URL
 
   // Fetch the blog post from the database using Prisma
   const data = await prisma.blogs.findUnique({
@@ -20,7 +19,29 @@ export async function generateMetadata({ params }) {
     return {
       title: 'Blog Not Found',
       description: 'The requested blog could not be found.',
-      // Add other default SEO fields as needed
+      alternates: {
+        canonical: `${baseurl}/404`,
+      },
+      openGraph: {
+        type: 'article',
+        title: 'Blog Not Found',
+        description: 'The requested blog could not be found.',
+        url: `${baseurl}/404`,
+        images: [
+          {
+            url: `${baseurl}/logo.png`, // Default image for 404
+            width: 800,
+            height: 600,
+            alt: 'Blog Not Found',
+          },
+        ],
+      },
+      structuredData: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: 'Blog Not Found',
+        description: 'The requested blog could not be found.',
+      }),
     };
   }
 
@@ -28,41 +49,55 @@ export async function generateMetadata({ params }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseurl}/articles/${data.slug}`,
+    },
     headline: data.seoTitle || data.title,
-    description: data.seoDescription || data.description,
-    author: {
-      "@type": "Person",
-      name: 'Sweet Developers', // Update if you have an author field
+    image: {
+      "@type": "ImageObject",
+      "url": data.image ? `${baseurl}${data.image}` : `${baseurl}/logo.png`,
+      "caption": data.imageCaption || '',
+      "width": 1200,
+      "height": 628,
     },
     datePublished: data.createdAt.toISOString(),
     dateModified: data.updatedAt.toISOString(),
-    url: `/articles/${data.slug}`,
-    image: data.image ? `${data.image}` : undefined,
-    keywords: data.seoKeywords,
+    author: {
+      "@type": "Person",
+      name: 'Sweet Developers',
+    },
     publisher: {
       "@type": "Organization",
       name: 'Sweet Developers',
       logo: {
         "@type": "ImageObject",
-        url: `/logo.png`, // Replace with actual logo URL
+        "url": `${baseurl}/logo.png`,
+        "width": 600,
+        "height": 60,
       },
     },
+    description: data.seoDescription || data.description,
+    keywords: data.seoKeywords || '',
   };
 
   // Return metadata including all SEO fields
   return {
     title: data.seoTitle || data.title,
     description: data.seoDescription || data.description,
-    canonical: `/articles/${data.slug}`,
+    alternates: {
+      canonical: `${baseurl}/articles/${data.slug}`,
+    },
     openGraph: {
+      type: 'article',
       title: data.seoTitle || data.title,
       description: data.seoDescription || data.description,
-      url: `/articles/${data.slug}`,
+      url: `${baseurl}/articles/${data.slug}`,
       images: [
         {
-          url: data.image ? `${data.image}` : `/logo.png`,
-          width: 800,
-          height: 600,
+          url: data.image ? `${baseurl}${data.image}` : `${baseurl}/logo.png`,
+          width: 1200,
+          height: 628,
           alt: data.seoTitle || data.title,
         },
       ],
@@ -70,6 +105,8 @@ export async function generateMetadata({ params }) {
     structuredData: JSON.stringify(schema),
   };
 }
+
+
 
 export default async function Page({ params }) {
   noStore();
