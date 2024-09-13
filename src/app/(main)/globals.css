@@ -58,3 +58,8 @@
   }
 }
 
+.prose-content {
+  max-width: 100%; /* Ensures content does not exceed the container width */
+  overflow-wrap: break-word; /* Ensures long words are broken to avoid overflow *//* Ensures text color matches the theme */
+}
+

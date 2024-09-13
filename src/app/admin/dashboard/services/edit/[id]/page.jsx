@@ -1,13 +1,14 @@
 "use client";
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-
+import { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import { Editor } from '@tinymce/tinymce-react'; // Import TinyMCE Editor
 import { unstable_noStore as noStore } from 'next/cache';
-import { Editor } from '@tinymce/tinymce-react';
-import { addService } from '../function';
+import { editService, getServiceById } from '../../function';
 
-const ServiceForm = () => {
+const EditService = () => {
   noStore();
+  const router = useRouter();
+  const { id } = useParams();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -16,9 +17,29 @@ const ServiceForm = () => {
     seoDescription: '',
     seoKeywords: '',
   });
-
   const [notification, setNotification] = useState('');
-  const router = useRouter();
+  const [currentImage, setCurrentImage] = useState('');
+
+  useEffect(() => {
+    const fetchServiceData = async () => {
+      try {
+        const response = await getServiceById(id);
+        const service = response;
+        setFormData({
+          title: service.title,
+          description: service.description,
+          image: null,
+          seoTitle: service.seoTitle,
+          seoDescription: service.seoDescription,
+          seoKeywords: service.seoKeywords,
+        });
+        setCurrentImage(service.image);
+      } catch (error) {
+        console.error('Failed to fetch service data:', error);
+      }
+    };
+    fetchServiceData();
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,14 +72,14 @@ const ServiceForm = () => {
     });
 
     try {
-      await addService(formDataToSend);
-      setNotification('Service added successfully!');
+      await editService(formDataToSend, id);
+      setNotification('Service updated successfully!');
       setTimeout(() => {
         setNotification('');
-        router.push('/admin/dashboard/services'); // Navigate to the desired page
-      }, 2000); // Adjust delay as needed
+        router.push('/admin/dashboard/services');
+      }, 2000);
     } catch (error) {
-      setNotification('Failed to add service. Please try again.');
+      setNotification('Failed to update service. Please try again.');
     }
   };
 
@@ -71,29 +92,19 @@ const ServiceForm = () => {
       )}
       <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded shadow-md mx-auto mt-8">
         {Object.entries(formData).map(([name, value]) => (
-          name !== 'image' && name !== 'description' && (
+          name !== 'image' && name !== 'description' && ( // Exclude 'description' for TinyMCE
             <div key={name}>
               <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
                 {name.charAt(0).toUpperCase() + name.slice(1).replace(/([A-Z])/g, ' $1')}
               </label>
-              {name === 'seoDescription' ? (
-                <textarea
-                  name={name}
-                  id={name}
-                  value={value}
-                  onChange={handleChange}
-                  className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-              ) : (
-                <input
-                  type="text"
-                  name={name}
-                  id={name}
-                  value={value}
-                  onChange={handleChange}
-                  className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-              )}
+              <input
+                type="text"
+                name={name}
+                id={name}
+                value={value}
+                onChange={handleChange}
+                className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
             </div>
           )
         ))}
@@ -118,6 +129,13 @@ const ServiceForm = () => {
           <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-1">
             Image
           </label>
+          {currentImage && (
+            <img
+              src={currentImage}
+              alt="Current Service Image"
+              className="mb-2 h-32 w-auto object-cover"
+            />
+          )}
           <input
             type="file"
             name="image"
@@ -127,11 +145,11 @@ const ServiceForm = () => {
           />
         </div>
         <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors">
-          Add Service
+          Update Service
         </button>
       </form>
     </div>
   );
 };
 
-export default ServiceForm;
+export default EditService;

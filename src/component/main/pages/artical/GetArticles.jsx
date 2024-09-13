@@ -1,6 +1,5 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Use axios or fetch for data fetching
 import Link from 'next/link';
 
 // Skeleton Component
