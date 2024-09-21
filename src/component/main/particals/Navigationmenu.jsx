@@ -72,9 +72,9 @@ const Navigationmenu = ({type}) => {
         <span>Services</span>
       </Link>
     </li>
-    <li className="group/menu-item ">
-      <a
-        href="portfolio.html"
+    <li className={`${router === 'projects'? "active":" "} group/menu-item `}>
+      <Link
+        href="/projects"
         className="group inline-flex items-center gap-2 rounded-lg px-3 py-2 text-center text-base font-medium text-muted transition hover:bg-light hover:text-dark group-[.active]/menu-item:bg-light group-[.active]/menu-item:text-dark dark:hover:bg-dark-2 dark:hover:text-white dark:group-[.active]/menu-item:bg-dark-2 dark:group-[.active]/menu-item:text-white"
       >
         <svg
@@ -89,8 +89,8 @@ const Navigationmenu = ({type}) => {
         >
           <path d="m3.503 5.998 5.949-2.591a.8.8 0 0 1 1.058.439l4.103 9.918a.834.834 0 0 1-.428 1.087l-5.948 2.59a.8.8 0 0 1-1.059-.438l-4.103-9.92a.833.833 0 0 1 .428-1.085ZM13 3.333h.833a.833.833 0 0 1 .834.834v2.916M17.167 5c.22.093.433.18.64.263a.833.833 0 0 1 .442 1.092l-1.915 4.478" />
         </svg>
-        <span>Works</span>
-      </a>
+        <span>Projects</span>
+      </Link>
     </li>
     <li className={`${router === 'articles'? "active":" "} group/menu-item `}>
       <Link

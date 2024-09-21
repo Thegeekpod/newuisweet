@@ -1,6 +1,8 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import prisma from '../../../../../lib/prisma';
 import Link from 'next/link';
+import FAQ from '@/component/main/pages/services/FAQ';
+import ContactFormSubmit from '@/component/main/pages/contact/ContactFormSubmit';
 
 export async function generateMetadata({ params }) {
   // Disable caching for this page
@@ -56,8 +58,8 @@ export async function generateMetadata({ params }) {
     headline: data.seoTitle || data.title,
     image: {
       "@type": "ImageObject",
-      "url": data.image ? `${baseurl}${data.image}` : `${baseurl}/logo.png`,
-      "caption": data.imageCaption || '',
+      "url": data.bannerImage ? `${baseurl}${data.bannerImage}` : `${baseurl}/logo.png`,
+      "caption": data.bannerImageCaption || '',
       "width": 1200,
       "height": 628,
     },
@@ -95,7 +97,7 @@ export async function generateMetadata({ params }) {
       url: `${baseurl}/articles/${data.slug}`,
       images: [
         {
-          url: data.image ? `${baseurl}${data.image}` : `${baseurl}/logo.png`,
+          url: data.bannerImage ? `${baseurl}${data.bannerImage}` : `${baseurl}/logo.png`,
           width: 1200,
           height: 628,
           alt: data.seoTitle || data.title,
@@ -111,6 +113,9 @@ export default async function Page({ params }) {
   const slug = params.slug;
   const data = await prisma.services.findUnique({
     where: { slug: slug },
+    include: {
+      faqs: true,
+    }
   });
 
   if (!data) {
@@ -131,19 +136,26 @@ export default async function Page({ params }) {
     <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
       <figure className="aspect-video overflow-hidden rounded-lg">
         <img
-          src={data?.image}
+          src={data?.bannerImage}
           alt={data?.title || "Blog Image"}
           className="h-full w-full object-cover"
         />
       </figure>
-  
+
       <article className="prose mt-6 dark:prose-invert xl:prose-lg prose-headings:font-medium prose-blockquote:border-primary lg:mt-10">
         <h2>{data?.title}</h2>
         <div className='prose-content max-w-full'
           dangerouslySetInnerHTML={{ __html: data?.description }}
         />
-      </article>
-     
+      </article><hr />
+      <h3 className="text-2xl mt-3 font-semibold leading-tight text-dark dark:text-light lg:text-3xl lg:leading-tight">
+          Enquery Now
+        </h3>
+      <ContactFormSubmit service={data.title}/>
+      {data?.faqs.length > 0 &&  <hr />}
+      <FAQ data={data?.faqs} />
+      {data?.faqs.length > 0 && <hr className='mt-10' />}
+      
       <div className="mt-10 lg:mt-14">
         <h3 className="text-2xl font-semibold leading-tight text-dark dark:text-light lg:text-3xl lg:leading-tight">
           Popular Services
@@ -153,7 +165,7 @@ export default async function Page({ params }) {
             <div className="" key={post.id}>
               <div className="relative">
                 <Link href={`/services/${post?.slug}`} className="group block aspect-6/4 overflow-hidden rounded-lg">
-                  <img src={post.image} alt={post.title} className="h-full w-full rounded-lg object-cover transition duration-700 group-hover:scale-105" />
+                  <img src={post.bannerImage} alt={post.title} className="h-full w-full rounded-lg object-cover transition duration-700 group-hover:scale-105" />
                 </Link>
               </div>
               <div className="mt-6">

@@ -4,13 +4,13 @@ import Swal from 'sweetalert2';
 import { submitForm } from './SubmitData';
 import { unstable_noStore as noStore } from 'next/cache';
 
-export default function ContactFormSubmit() {
+export default function ContactFormSubmit({service}) {
   noStore();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    services: '',
+    services: service || '',
     message: ''
   });
 
@@ -23,6 +23,7 @@ export default function ContactFormSubmit() {
     const formDataToSend = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
       formDataToSend.append(key, value);
+      
     });
 
     try {
@@ -117,7 +118,8 @@ export default function ContactFormSubmit() {
           <label htmlFor="services" className="mb-2 block text-sm font-medium">
             Services
           </label>
-          <select
+          {!service ? (
+            <select
             id="services"
             name="services"
             value={formData.services}
@@ -129,6 +131,18 @@ export default function ContactFormSubmit() {
             <option value="graphicdesign">Graphic Design</option>
             <option value="appdevelopment">App Development</option>
           </select>
+          ) :  <input
+          required
+          readOnly
+          type="services"
+          id="services"
+          name="services"
+          value={formData.services || service}
+          onChange={handleChange}
+          placeholder="Enter your services"
+          className="block w-full rounded-lg border px-6 py-4"
+        /> }
+          
         </div>
       </div>
 

@@ -21,9 +21,9 @@ export const GetServices = ({ data, isLoading }) => {
               <div className="grid place-content-center rounded-lg bg-white p-6 dark:bg-black">
                 <Skeleton width="120px" height="120px" />
               </div>
-              <p className="mt-3 text-base font-medium text-dark dark:text-light/70">
+              <div className="mt-3 text-base font-medium text-dark dark:text-light/70">
                 <Skeleton width="100px" height="20px" />
-              </p>
+              </div>
             </div>
           ))
         ) : data?.length > 0 ? (

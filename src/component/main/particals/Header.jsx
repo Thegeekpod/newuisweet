@@ -3,11 +3,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import ThemeToggle from './ThemeToggleButton'
 import MobileHeader from './MobileHeader';
 import Navigationmenu from './Navigationmenu';
-import { useRouter, useSearchParams, useSelectedLayoutSegment } from 'next/navigation';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import { useTheme } from '@/app/(main)/hooks/ThemeContext';
 
 
 export default function Header() {
-  
+  const { theme, toggleTheme } = useTheme();
+
   const [toggle, setToggle] = useState(false);
   const panelRef = useRef(null);
   const router =useSelectedLayoutSegment();
@@ -56,25 +58,27 @@ export default function Header() {
         <div className="flex items-center justify-between rounded-2xl bg-white p-3 shadow dark:bg-black dark:shadow-dark">
           {/* Logo */}
           <a
-            href="index.html"
-            className="inline-flex items-center gap-3 px-3 text-2xl font-semibold text-dark dark:text-white"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="h-6 w-6"
-            >
-              <path
-                fill="currentColor"
-                d="M0 1.5A1.5 1.5 0 0 1 1.5 0H9a1.5 1.5 0 0 1 1.5 1.5v21A1.5 1.5 0 0 1 9 24H1.5A1.5 1.5 0 0 1 0 22.5v-21Zm13.5 0A1.5 1.5 0 0 1 15 0h7.5A1.5 1.5 0 0 1 24 1.5V9a1.5 1.5 0 0 1-1.5 1.5H15A1.5 1.5 0 0 1 13.5 9V1.5Zm0 13.5a1.5 1.5 0 0 1 1.5-1.5h7.5A1.5 1.5 0 0 1 24 15v7.5a1.5 1.5 0 0 1-1.5 1.5H15a1.5 1.5 0 0 1-1.5-1.5V15Z"
-              />
-            </svg>
-            <span>
-              {" "}
-              Sweet<span className="text-primary"> Developers</span>{" "}
-            </span>
-          </a>
+  href="index.html"
+  className="inline-flex items-center gap-3 px-3 text-2xl font-semibold text-dark dark:text-white"
+>
+  {theme === 'dark' ? (
+    <img
+    src="/whitefavicon.png"
+    alt="Sweet Developers"
+    className="h-6 w-6"
+  />
+  ):(<img
+    src="/favicon.png"
+    alt="Sweet Developers"
+    className="h-6 w-6"
+  />)}
+  
+  <span>
+    {" "}
+    Sweet<span className="text-primary"> Developers</span>{" "}
+  </span>
+</a>
+
           {/* Navigation menu */}
        <Navigationmenu/>
           {/* Header buttons */}

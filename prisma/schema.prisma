@@ -3,9 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  provider = "mysql"
+  url = env("DATABASE_URL") // uses connection pooling
+
 }
 
 model Admin {
@@ -21,7 +21,7 @@ model Blogs {
   description     String   @db.Text
   image           String?
   slug            String   @unique
-  tag             String[]
+  tag             Json?
   seoTitle        String?
   seoDescription  String?
   seoKeywords     String?
@@ -39,15 +39,95 @@ model ContactForm {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
+
+
 model Services {
-  id              Int      @id @default(autoincrement())
+  id              Int        @id @default(autoincrement())
   title           String
-  description     String   @db.Text
+  description     String     @db.Text
   image           String?
-  slug            String   @unique
+  bannerImage     String?
+  slug            String     @unique
   seoTitle        String?
   seoDescription  String?
   seoKeywords     String?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  faqs            ServicesFaq[] @relation("ServiceFAQs")
+}
+
+model ServicesFaq {
+  id         Int      @id @default(autoincrement())
+  serviceId  Int
+  question   String
+  answer     String   @db.Text
+  service    Services @relation("ServiceFAQs", fields: [serviceId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model Specialized  {
+  id              Int        @id @default(autoincrement())
+  title           String
+  description     String     @db.Text
+  image           String?
+  bannerImage     String?
+  slug            String     @unique
+  seoTitle        String?
+  seoDescription  String?
+  seoKeywords     String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  faqs            SpecializedFaq[] @relation("SpecializedFAQs")
+}
+
+model SpecializedFaq {
+  id         Int      @id @default(autoincrement())
+  specializedId  Int
+  question   String
+  answer     String   @db.Text
+  specialized    Specialized @relation("SpecializedFAQs", fields: [specializedId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+model JobPost {
+  id              Int        @id @default(autoincrement())
+  title           String
+  description     String     @db.Text
+  image           String?
+  bannerImage     String?
+  slug            String     @unique
+  seoTitle        String?
+  seoDescription  String?
+  seoKeywords     String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  jobApplied      JobApplied[]
+}
+
+model JobApplied {
+  id          Int      @id @default(autoincrement())
+  jobId       Int
+  name        String
+  email       String
+  phone       String
+  address     String
+  cvUpload    String
+  createdAt   DateTime @default(now())
+  jobPost     JobPost  @relation(fields: [jobId], references: [id])
+  @@index([jobId])  // Optional: index for the jobId field to improve query performance
+  
+}
+model Projects  {
+  id              Int        @id @default(autoincrement())
+  title           String
+  description     String     @db.Text
+  image           String?
+  url        String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  
 }

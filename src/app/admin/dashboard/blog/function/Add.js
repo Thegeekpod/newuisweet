@@ -116,9 +116,15 @@ export async function editBlog(formData, blogId) {
       throw new Error('Blog post not found');
     }
 
-    const baseSlug = title ? generateSlug(title) : existingBlog.slug;
-    const slug = await generateUniqueSlug(baseSlug);
+ 
 
+
+
+    let slug = existingBlog.slug;
+    if (title && title !== existingBlog.title) {
+      const baseSlug = generateSlug(title);
+      slug = await generateUniqueSlug(baseSlug);
+    }
     let newImagePath = existingBlog.image;
 
     if (imageFile && imageFile.size > 0) {

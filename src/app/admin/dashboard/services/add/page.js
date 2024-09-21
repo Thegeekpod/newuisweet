@@ -1,23 +1,25 @@
 "use client";
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-
-import { unstable_noStore as noStore } from 'next/cache';
-import { Editor } from '@tinymce/tinymce-react';
-import { addService } from '../function';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { unstable_noStore as noStore } from "next/cache";
+import { Editor } from "@tinymce/tinymce-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { addService } from "../function";
 
 const ServiceForm = () => {
   noStore();
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     image: null,
-    seoTitle: '',
-    seoDescription: '',
-    seoKeywords: '',
+    bannerImage: null,
+    seoTitle: "",
+    seoDescription: "",
+    seoKeywords: "",
   });
 
-  const [notification, setNotification] = useState('');
+  const [faqs, setFaqs] = useState([]);
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -29,9 +31,10 @@ const ServiceForm = () => {
   };
 
   const handleImageChange = (e) => {
+    const { name } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      image: e.target.files[0],
+      [name]: e.target.files[0],
     }));
   };
 
@@ -42,6 +45,27 @@ const ServiceForm = () => {
     }));
   };
 
+  const handleAddFaq = () => {
+    setFaqs([...faqs, { question: "", answer: "" }]);
+  };
+
+  const handleFaqChange = (index, e) => {
+    const { name, value } = e.target;
+    const updatedFaqs = faqs.map((faq, i) =>
+      i === index ? { ...faq, [name]: value } : faq
+    );
+    setFaqs(updatedFaqs);
+  };
+  const handleRemoveFaq = (index) => {
+    setFaqs(faqs.filter((_, i) => i !== index));
+  };
+  const handleEditorFaqChange = (index, content) => {
+    const updatedFaqs = faqs.map((faq, i) =>
+      i === index ? { ...faq, answer: content } : faq
+    );
+    setFaqs(updatedFaqs);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -50,85 +74,242 @@ const ServiceForm = () => {
       formDataToSend.append(key, value);
     });
 
+    formDataToSend.append("faqs", JSON.stringify(faqs));
+
     try {
       await addService(formDataToSend);
-      setNotification('Service added successfully!');
+      toast.success("Service added successfully!");
       setTimeout(() => {
-        setNotification('');
-        router.push('/admin/dashboard/services'); // Navigate to the desired page
-      }, 2000); // Adjust delay as needed
+        router.push("/admin/dashboard/services");
+      }, 2000);
     } catch (error) {
-      setNotification('Failed to add service. Please try again.');
+      toast.error("Failed to add service. Please try again.");
     }
   };
 
   return (
-    <div className="relative">
-      {notification && (
-        <div className="fixed top-4 right-4 bg-blue-500 text-white p-4 rounded shadow-md">
-          {notification}
+    <div className="container mx-auto px-4 py-8">
+      <ToastContainer />
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-white p-6 rounded shadow-md"
+      >
+        {/* Left Column (Service Info) */}
+        <div className="space-y-6">
+          <div>
+            <label
+              htmlFor="title"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Title
+            </label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              value={formData.title}
+              onChange={handleChange}
+              className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Description
+            </label>
+            <Editor
+              apiKey="fhwn3bux5jvgi5gdbewhzbu8vnzxow2wyp4a1k1zg9c32gp9"
+              value={formData.description}
+              init={{
+                height: 300,
+                menubar: true,
+                plugins:
+                  "advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount",
+                toolbar:
+                  "undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
+                content_style:
+                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+              }}
+              onEditorChange={handleEditorChange}
+            />
+          </div>
+
+
         </div>
-      )}
-      <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded shadow-md mx-auto mt-8">
-        {Object.entries(formData).map(([name, value]) => (
-          name !== 'image' && name !== 'description' && (
-            <div key={name}>
-              <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
-                {name.charAt(0).toUpperCase() + name.slice(1).replace(/([A-Z])/g, ' $1')}
-              </label>
-              {name === 'seoDescription' ? (
-                <textarea
-                  name={name}
-                  id={name}
-                  value={value}
-                  onChange={handleChange}
-                  className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-              ) : (
-                <input
-                  type="text"
-                  name={name}
-                  id={name}
-                  value={value}
-                  onChange={handleChange}
-                  className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-              )}
-            </div>
-          )
-        ))}
-        <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
-            Description
-          </label>
-          <Editor
-            apiKey="fhwn3bux5jvgi5gdbewhzbu8vnzxow2wyp4a1k1zg9c32gp9" // Replace with your TinyMCE API key
-            value={formData.description}
-            init={{
-              height: 400,
-              menubar: true,
-              plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
-              toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-              content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-            }}
-            onEditorChange={handleEditorChange}
-          />
+
+        {/* Right Column (SEO Info) */}
+        <div className="space-y-6">
+          <div>
+            <label
+              htmlFor="image"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Service Image
+            </label>
+            <input
+              type="file"
+              name="image"
+              id="image"
+              onChange={handleImageChange}
+              className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="bannerImage"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Banner Image
+            </label>
+            <input
+              type="file"
+              name="bannerImage"
+              id="bannerImage"
+              onChange={handleImageChange}
+              className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="seoTitle"
+              className="block text-sm font-medium text-gray-700"
+            >
+              SEO Title
+            </label>
+            <input
+              type="text"
+              name="seoTitle"
+              id="seoTitle"
+              value={formData.seoTitle}
+              onChange={handleChange}
+              className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="seoDescription"
+              className="block text-sm font-medium text-gray-700"
+            >
+              SEO Description
+            </label>
+            <textarea
+              name="seoDescription"
+              id="seoDescription"
+              value={formData.seoDescription}
+              onChange={handleChange}
+              className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="seoKeywords"
+              className="block text-sm font-medium text-gray-700"
+            >
+              SEO Keywords
+            </label>
+            <input
+              type="text"
+              name="seoKeywords"
+              id="seoKeywords"
+              value={formData.seoKeywords}
+              onChange={handleChange}
+              className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-1">
-            Image
-          </label>
-          <input
-            type="file"
-            name="image"
-            id="image"
-            onChange={handleImageChange}
-            className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
+
+        {/* FAQ Section */}
+        <div className="col-span-2">
+          <hr className="my-4" />
+          <h3 className="text-lg font-semibold">FAQs</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {faqs.map((faq, index) => (
+              <div key={index} className="space-y-2 shadow-xl rounded-lg bg-white p-6">
+                   <div className="flex justify-between items-center">
+                <h3 className="text-sm font-medium text-gray-600">FAQ {index + 1}</h3>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveFaq(index)}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  Remove
+                </button>
+              </div>
+                {/* Question Input */}
+                <div>
+                  <label
+                    htmlFor={`faq-question-${index}`}
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Question
+                  </label>
+                  <input
+                    type="text"
+                    name="question"
+                    id={`faq-question-${index}`}
+                    value={faq.question}
+                    onChange={(e) => handleFaqChange(index, e)}
+                    className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+
+                {/* Answer Input with Editor */}
+                <div>
+
+                  <label
+                    htmlFor={`faq-answer-${index}`}
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Answer
+                  </label>
+                  <Editor
+                    apiKey="fhwn3bux5jvgi5gdbewhzbu8vnzxow2wyp4a1k1zg9c32gp9"
+                    value={faq.answer}
+                    init={{
+                      height: 200,
+                      menubar: true,
+                      plugins:
+                        "advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount",
+                      toolbar:
+                        "undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
+                      content_style:
+                        "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                    }}
+                    onEditorChange={(content) => handleEditorFaqChange(index, content)}
+                  />
+                </div>
+                
+              </div>
+            ))}
+          </div>
+
+
+
+          <button
+            type="button"
+            onClick={handleAddFaq}
+            className="bg-green-500 text-white py-2 px-4 rounded mt-4"
+          >
+            Add FAQ
+          </button>
         </div>
-        <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors">
-          Add Service
-        </button>
+
+        {/* Submit Button */}
+        <div className="col-span-2 flex justify-center">
+          <button
+            type="submit"
+            className="bg-blue-500 w-full text-white py-3 px-6 rounded shadow-lg hover:bg-blue-600"
+          >
+            Add Service
+          </button>
+        </div>
       </form>
     </div>
   );
