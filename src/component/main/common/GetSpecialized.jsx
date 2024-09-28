@@ -8,7 +8,7 @@ const GetSpecialized = ({ data,layout }) => {
   return (
     <>
       {data?.length > 0 && (
-        <div className={`mt-6 grid grid-cols-${layout} gap-4 md:grid-cols-${layout} lg:grid-cols-${layout}`}>
+        <div className={layout == "6" ? `mt-6 grid grid-cols-2 gap-4 md:grid-cols-6` : `mt-6 grid grid-cols-2 gap-4 md:grid-cols-3` }>
           {data.map((item, index) => (
             <Link key={index} href={`/specialized/${item.slug}`}>
               <div className="text-center">
