@@ -91,7 +91,7 @@ const Reviews = () => {
           className="flex space-x-6 overflow-x-scroll scrollbar-none no-scrollbar"
         >
           {[...testimonials, ...testimonials].map((testimonial, index) => (
-            <div key={index} className="flex-none w-1/2">
+            <div key={index} className="flex-none w-full lg:w-1/2">
               <div className="flex h-full flex-col justify-between rounded-lg bg-light p-6 dark:bg-dark-2">
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="flex flex-wrap items-center gap-1">

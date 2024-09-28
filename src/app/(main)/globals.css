@@ -63,3 +63,9 @@
   overflow-wrap: break-word; /* Ensures long words are broken to avoid overflow *//* Ensures text color matches the theme */
 }
 
+@media only screen and (max-width: 768px) {
+  .reverce{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

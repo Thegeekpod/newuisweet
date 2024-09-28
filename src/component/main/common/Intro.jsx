@@ -31,7 +31,7 @@ const Intro = () => {
         <div className="mt-6 flex flex-wrap gap-2">
           <a
             href="#"
-            className="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-primary px-6 py-4 font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50"
+            className="inline-flex items-center gap-x-1 lg:gap-x-2 rounded-lg border border-transparent bg-primary lg:px-6 px-2 py-4 font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ const Intro = () => {
             data-clipboard-text="shams.sujon.01@gmail.com"
             data-clipboard-action="copy"
             data-clipboard-success-text="Copied to clipboard"
-            className="js-clipboard hs-tooltip inline-flex items-center gap-x-2 rounded-lg border border-light bg-transparent px-6 py-4 font-medium text-dark transition [--trigger:focus] hover:bg-light focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:text-light/70 dark:hover:bg-dark dark:hover:text-white"
+            className="js-clipboard hs-tooltip inline-flex items-center gap-x-1 lg:gap-x-2 rounded-lg border border-light bg-transparent lg:px-6 px-2 py-4 font-medium text-dark transition [--trigger:focus] hover:bg-light focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:text-light/70 dark:hover:bg-dark dark:hover:text-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

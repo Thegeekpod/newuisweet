@@ -4,7 +4,8 @@ const Header = lazy(() => import("@/component/main/particals/Header"));
 const Intro = lazy(() => import('@/component/main/common/Intro'));
 
 
-const Main2 = ({ children }) => {
+const Main2 = ({ children, pagename }) => {
+    console.log(pagename)
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
@@ -34,9 +35,10 @@ const Main2 = ({ children }) => {
 
                 <div className="mx-auto flex max-w-screen-2xl flex-col justify-between gap-4 p-4 lg:gap-6 lg:p-6 lg:pb-0">
                     <Header />
-                    <main className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-6">
-                        <Intro/>
+                    <main className={pagename == '(home)' ?`grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-6`  : 'grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-6 reverce'}>
+                    <Intro/>
                         {children}
+                        
                     </main>
                     <Footer />
                 </div>
