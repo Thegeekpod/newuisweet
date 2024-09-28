@@ -58,8 +58,8 @@ export default function Header() {
       <div className="">
         <div className="flex items-center justify-between rounded-2xl bg-white p-3 shadow dark:bg-black dark:shadow-dark">
           {/* Logo */}
-          <a
-  href="index.html"
+          <Link
+  href="/"
   className="inline-flex items-center gap-3 px-3 text-2xl font-semibold text-dark dark:text-white"
 >
   {theme === 'dark' ? (
@@ -78,7 +78,7 @@ export default function Header() {
     {" "}
     Sweet<span className="text-primary"> Developers</span>{" "}
   </span>
-</a>
+</Link>
 
           {/* Navigation menu */}
        <Navigationmenu/>
