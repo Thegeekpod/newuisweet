@@ -230,7 +230,7 @@ const SpecializedForm = () => {
               htmlFor="schema"
               className="block text-sm font-medium text-gray-700"
             >
-              SEO Description
+              SEO Schema
             </label>
             <textarea
               name="schema"
