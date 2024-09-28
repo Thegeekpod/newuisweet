@@ -45,6 +45,7 @@ export async function addBlog(formData) {
     const seoTitle = formData.get('seoTitle');
     const seoDescription = formData.get('seoDescription');
     const seoKeywords = formData.get('seoKeywords');
+    const schema = formData.get('schema');
 
     if (!imageFile || !title) {
       throw new Error('Missing required fields');
@@ -78,6 +79,7 @@ export async function addBlog(formData) {
         seoTitle,
         seoDescription,
         seoKeywords,
+        schema,
       },
     });
 
@@ -98,6 +100,7 @@ export async function editBlog(formData, blogId) {
     const seoTitle = formData.get('seoTitle');
     const seoDescription = formData.get('seoDescription');
     const seoKeywords = formData.get('seoKeywords');
+    const schema = formData.get('schema');
 
     if (!blogId) {
       throw new Error('Blog ID is required');
@@ -156,6 +159,7 @@ export async function editBlog(formData, blogId) {
         seoTitle: seoTitle || existingBlog.seoTitle,
         seoDescription: seoDescription || existingBlog.seoDescription,
         seoKeywords: seoKeywords || existingBlog.seoKeywords,
+        schema : schema || existingBlog.schema,
       },
     });
 

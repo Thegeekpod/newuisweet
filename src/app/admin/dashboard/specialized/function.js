@@ -46,6 +46,7 @@ export async function addSpecialized(formData) {
     const seoTitle = formData.get('seoTitle');
     const seoDescription = formData.get('seoDescription');
     const seoKeywords = formData.get('seoKeywords');
+    const schema = formData.get('schema');
 
     if (!imageFile || !title) {
       throw new Error('Missing required fields');
@@ -86,6 +87,7 @@ export async function addSpecialized(formData) {
         seoTitle,
         seoDescription,
         seoKeywords,
+        schema,
       },
     });
 
@@ -131,6 +133,7 @@ export async function editSpecialized(formData, specializedId) {
     const seoDescription = formData.get('seoDescription');
     const seoKeywords = formData.get('seoKeywords');
     const faqs = JSON.parse(formData.get('faqs')); // Get FAQs from formData
+    const schema = formData.get('schema');
 
     if (!specializedId) {
       throw new Error('Specialized ID is required');
@@ -199,7 +202,7 @@ export async function editSpecialized(formData, specializedId) {
         seoTitle: seoTitle || existingSpecialized.seoTitle,
         seoDescription: seoDescription || existingSpecialized.seoDescription,
         seoKeywords: seoKeywords || existingSpecialized.seoKeywords,
-      },
+        schema : schema || existingSpecialized.schema,      },
     });
 
     // Handle FAQ updates

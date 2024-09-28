@@ -6,7 +6,6 @@ export async function generateMetadata({ params }) {
   // Disable caching for this page
   noStore();
 
-  const baseurl = process.env.BASE_URL || 'http://localhost:3000';
   const slug = params.slug;
 
   // Fetch the specialized post from the database using Prisma
@@ -14,36 +13,37 @@ export async function generateMetadata({ params }) {
     where: { slug: slug },
   });
 
+  // Default metadata in case of no data found
+  const defaultMetadata = {
+    title: 'Specialized Not Found',
+    description: 'The requested specialized service could not be found.',
+    alternates: {
+      canonical: `${process.env.BASE_URL}/404`,
+    },
+    openGraph: {
+      type: 'article',
+      title: 'Specialized Not Found',
+      description: 'The requested specialized service could not be found.',
+      url: `${process.env.BASE_URL}/404`,
+      images: [
+        {
+          url: `${process.env.BASE_URL}/logo.png`, // Default image for 404
+          width: 800,
+          height: 600,
+          alt: 'Specialized Not Found',
+        },
+      ],
+    },
+    structuredData: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: 'Specialized Not Found',
+      description: 'The requested specialized service could not be found.',
+    }),
+  };
+
   // If no data is found, return default metadata
-  if (!data) {
-    return {
-      title: 'Blog Not Found',
-      description: 'The requested specialized could not be found.',
-      alternates: {
-        canonical: `${baseurl}/404`,
-      },
-      openGraph: {
-        type: 'article',
-        title: 'Blog Not Found',
-        description: 'The requested specialized could not be found.',
-        url: `${baseurl}/404`,
-        images: [
-          {
-            url: `${baseurl}/logo.png`, // Default image for 404
-            width: 800,
-            height: 600,
-            alt: 'Blog Not Found',
-          },
-        ],
-      },
-      structuredData: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        name: 'Blog Not Found',
-        description: 'The requested specialized could not be found.',
-      }),
-    };
-  }
+  if (!data) return defaultMetadata;
 
   // Define schema.org structured data
   const schema = {
@@ -51,12 +51,12 @@ export async function generateMetadata({ params }) {
     "@type": "BlogPosting",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${baseurl}/articles/${data.slug}`,
+      "@id": `${process.env.BASE_URL}/specialized/${data.slug}`,
     },
     headline: data.seoTitle || data.title,
     image: {
       "@type": "ImageObject",
-      "url": data.bannerImage ? `${baseurl}${data.bannerImage}` : `${baseurl}/logo.png`,
+      "url": data.bannerImage ? `${process.env.BASE_URL}${data.bannerImage}` : `${process.env.BASE_URL}/logo.png`,
       "caption": data.bannerImageCaption || '',
       "width": 1200,
       "height": 628,
@@ -72,7 +72,7 @@ export async function generateMetadata({ params }) {
       name: 'Sweet Developers',
       logo: {
         "@type": "ImageObject",
-        "url": `${baseurl}/logo.png`,
+        "url": `${process.env.BASE_URL}/logo.png`,
         "width": 600,
         "height": 60,
       },
@@ -86,16 +86,16 @@ export async function generateMetadata({ params }) {
     title: data.seoTitle || data.title,
     description: data.seoDescription || data.description,
     alternates: {
-      canonical: `${baseurl}/articles/${data.slug}`,
+      canonical: `${process.env.BASE_URL}/specialized/${data.slug}`,
     },
     openGraph: {
       type: 'article',
       title: data.seoTitle || data.title,
       description: data.seoDescription || data.description,
-      url: `${baseurl}/articles/${data.slug}`,
+      url: `${process.env.BASE_URL}/specialized/${data.slug}`,
       images: [
         {
-          url: data.bannerImage ? `${baseurl}${data.bannerImage}` : `${baseurl}/logo.png`,
+          url: data.bannerImage ? `${process.env.BASE_URL}${data.bannerImage}` : `${process.env.BASE_URL}/logo.png`,
           width: 1200,
           height: 628,
           alt: data.seoTitle || data.title,
@@ -120,9 +120,47 @@ export default async function Page({ params }) {
     return <p>No specialized data available.</p>;
   }
 
-
-
+  // Define schema.org structured data for the body
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Specialized",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${process.env.BASE_URL || 'http://localhost:3000'}/specialized/${data.slug}`,
+    },
+    headline: data.seoTitle || data.title,
+    image: {
+      "@type": "ImageObject",
+      url: data.bannerImage ? `${process.env.BASE_URL || 'http://localhost:3000'}${data.bannerImage}` : `${process.env.BASE_URL || 'http://localhost:3000'}/logo.png`,
+      caption: data.title || '',
+      width: 1200,
+      height: 628,
+    },
+    datePublished: data.createdAt.toISOString(),
+    dateModified: data.updatedAt.toISOString(),
+    author: {
+      "@type": "Person",
+      name: 'Sweet Developers',
+    },
+    publisher: {
+      "@type": "Organization",
+      name: 'Sweet Developers',
+      logo: {
+        "@type": "ImageObject",
+        url: `${process.env.BASE_URL || 'http://localhost:3000'}/logo.png`,
+        width: 600,
+        height: 60,
+      },
+    },
+    description: data.seoDescription || data.description,
+    keywords: data.seoKeywords || '',
+  };
+  const jsonSchema = JSON.stringify(schema);
   return (
+    <> <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: (data?.schema || jsonSchema) }}
+  />
     <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
       <figure className="aspect-video overflow-hidden rounded-lg">
         <img
@@ -138,13 +176,18 @@ export default async function Page({ params }) {
           dangerouslySetInnerHTML={{ __html: data?.description }}
         />
       </article>
-     
-      
-      {data?.faqs.length > 0 &&  <hr />}
-      <FAQ data={data?.faqs} />
-      {data?.faqs.length > 0 && <hr className='mt-10' />}
-      
+
+      {data?.faqs.length > 0 && (
+        <>
+          <hr />
+          <FAQ data={data?.faqs} />
+          <hr className='mt-10' />
+        </>
+      )}
+
+      {/* Add structured data for SEO */}
      
     </div>
+    </>
   );
 }

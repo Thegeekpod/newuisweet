@@ -26,6 +26,7 @@ const EditSpecialized = () => {
     seoTitle: '',
     seoDescription: '',
     seoKeywords: '',
+    schema : '',
   });
   const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(false); // Loading state
@@ -46,7 +47,7 @@ const EditSpecialized = () => {
           seoTitle: specialized.seoTitle,
           seoDescription: specialized.seoDescription,
           seoKeywords: specialized.seoKeywords,
-        });
+          schema : specialized.schema,        });
         setCurrentImage(specialized.image);
         setCurrentBannerImage(specialized.bannerImage);
         setFaqs(specialized.faqs); // Populate FAQs from the fetched data
@@ -180,7 +181,7 @@ const EditSpecialized = () => {
             apiKey="fhwn3bux5jvgi5gdbewhzbu8vnzxow2wyp4a1k1zg9c32gp9"
             value={formData.description}
             init={{
-              height: 300,
+              height: 340,
               menubar: true,
               plugins:
                 "advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount",
@@ -298,7 +299,21 @@ const EditSpecialized = () => {
           />
         </div>
       </div>
-
+      <div className="col-span-2">
+          <label
+            htmlFor="schema"
+            className="block text-sm font-medium text-gray-700"
+          >
+            SEO Schema
+          </label>
+          <textarea
+            name="schema"
+            id="schema"
+            value={formData.schema}
+            onChange={handleChange}
+            className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
       {/* FAQs Section */}
       <div className="col-span-2">
         <h2 className="text-lg font-semibold text-gray-700">FAQs</h2>

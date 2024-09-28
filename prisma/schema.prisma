@@ -25,6 +25,7 @@ model Blogs {
   seoTitle        String?
   seoDescription  String?
   seoKeywords     String?
+  schema     String   @db.Text
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
@@ -51,6 +52,7 @@ model Services {
   seoTitle        String?
   seoDescription  String?
   seoKeywords     String?
+  schema     String   @db.Text
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
   faqs            ServicesFaq[] @relation("ServiceFAQs")
@@ -77,6 +79,7 @@ model Specialized  {
   seoTitle        String?
   seoDescription  String?
   seoKeywords     String?
+  schema     String   @db.Text
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
   faqs            SpecializedFaq[] @relation("SpecializedFAQs")
@@ -126,8 +129,28 @@ model Projects  {
   title           String
   description     String     @db.Text
   image           String?
-  url        String?
+  url             String?
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
   
+}
+
+
+model SEO {
+  id               Int      @id @default(autoincrement())
+  pagename         String?
+  title            String?
+  description      String?
+  schema           String     @db.Text
+  canonical        String?
+  og_title         String?   // Open Graph title
+  og_description   String?   // Open Graph description
+  og_url           String?   // Open Graph URL
+  og_image         String?   // Open Graph image URL
+  og_type          String?    // Open Graph type (e.g., article, website, etc.)
+  og_site_name     String?    // Open Graph site name
+  og_locale        String?    // Open Graph locale (e.g., en_US)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
 }

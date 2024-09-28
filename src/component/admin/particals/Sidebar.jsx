@@ -55,7 +55,12 @@ export const Sidebar = () => {
               Enquiry Form
             </Link>
           </li>
-          
+          <li className="mb-4">
+            <Link href="/admin/dashboard/seo" className={`hover:bg-gray-700 p-2 rounded block flex items-center ${router === 'seo' ? 'bg-gray-700' : ''}`}>
+            <FaEnvelope className="h-6 w-6 mr-3" />
+              Seo Config
+            </Link>
+          </li>
           {/* Add more links here if needed */}
         </ul>
       </nav>

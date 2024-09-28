@@ -15,6 +15,7 @@ const BlogForm = () => {
     seoTitle: '',
     seoDescription: '',
     seoKeywords: '',
+    schema : '',
   });
 
   const [notification, setNotification] = useState('');
@@ -76,7 +77,7 @@ const BlogForm = () => {
               <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
                 {name.charAt(0).toUpperCase() + name.slice(1).replace(/([A-Z])/g, ' $1')}
               </label>
-              {name === 'seoDescription' ? (
+              {name === 'seoDescription' || name === 'schema' ? (
                 <textarea
                   name={name}
                   id={name}

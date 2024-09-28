@@ -17,6 +17,7 @@ const ServiceForm = () => {
     seoTitle: "",
     seoDescription: "",
     seoKeywords: "",
+    schema : "",
   });
 
   const [faqs, setFaqs] = useState([]);
@@ -124,7 +125,7 @@ const ServiceForm = () => {
               apiKey="fhwn3bux5jvgi5gdbewhzbu8vnzxow2wyp4a1k1zg9c32gp9"
               value={formData.description}
               init={{
-                height: 300,
+                height: 340,
                 menubar: true,
                 plugins:
                   "advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount",
@@ -223,8 +224,23 @@ const ServiceForm = () => {
               className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
+         
         </div>
-
+        <div className="col-span-2">
+            <label
+              htmlFor="seoSchema"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Schema
+            </label>
+            <textarea
+              name="schema"
+              id="schema"
+              value={formData.schema}
+              onChange={handleChange}
+              className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
         {/* FAQ Section */}
         <div className="col-span-2">
           <hr className="my-4" />

@@ -46,6 +46,7 @@ export async function addService(formData) {
     const seoTitle = formData.get('seoTitle');
     const seoDescription = formData.get('seoDescription');
     const seoKeywords = formData.get('seoKeywords');
+    const schema = formData.get('schema');
 
     if (!imageFile || !title) {
       throw new Error('Missing required fields');
@@ -90,6 +91,7 @@ export async function addService(formData) {
         seoTitle,
         seoDescription,
         seoKeywords,
+        schema,
       },
     });
 
@@ -138,7 +140,7 @@ export async function editService(formData, serviceId) {
     const seoDescription = formData.get('seoDescription');
     const seoKeywords = formData.get('seoKeywords');
     const faqs = JSON.parse(formData.get('faqs')); // Get FAQs from formData
-
+    const schema = formData.get('schema');
     if (!serviceId) {
       throw new Error('Service ID is required');
     }
@@ -206,6 +208,7 @@ export async function editService(formData, serviceId) {
         seoTitle: seoTitle || existingService.seoTitle,
         seoDescription: seoDescription || existingService.seoDescription,
         seoKeywords: seoKeywords || existingService.seoKeywords,
+        schema: schema || existingService.schema
       },
     });
 

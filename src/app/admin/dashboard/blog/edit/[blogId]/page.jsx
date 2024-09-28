@@ -17,6 +17,7 @@ const EditBlog = () => {
     seoTitle: '',
     seoDescription: '',
     seoKeywords: '',
+    schema : '',
   });
   const [notification, setNotification] = useState('');
   const [currentImage, setCurrentImage] = useState('');
@@ -34,6 +35,7 @@ const EditBlog = () => {
           seoTitle: blog.seoTitle,
           seoDescription: blog.seoDescription,
           seoKeywords: blog.seoKeywords,
+          schema: blog.schema,
         });
         setCurrentImage(blog.image);
       } catch (error) {
