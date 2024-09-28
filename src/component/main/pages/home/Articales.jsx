@@ -32,7 +32,7 @@ const Articales = ({data}) => {
             key={item.slug}
             className="animate-scrollY space-y-4 group-hover:[animation-play-state:paused]"
           >
-            <div className="flex flex-col gap-1 md:flex-row md:gap-10 justify-between">
+            <div className="flex flex-row gap-1 md:flex-row md:gap-10 justify-between">
               <div className="flex items-center gap-3">
                 <div className="grid h-8 w-8 shrink-0 place-content-center rounded-lg bg-light dark:bg-dark-2">
                   <img
@@ -43,7 +43,7 @@ const Articales = ({data}) => {
                 </div>
                 <div className="">
                   <h6 className="text-base font-semibold text-dark dark:text-light/70">
-                    {item.title}
+                    {item.title.slice(0,10) + "..."}
                   </h6>
                   <p className="text-sm text-muted">
                     Date : {new Date(item.createdAt).toLocaleDateString()}
@@ -52,7 +52,7 @@ const Articales = ({data}) => {
               </div>
               <Link
                 href={`/articles/${item.slug}`}
-                className="inline-flex items-center  rounded-lg border border-transparent bg-primary px-5 py-1 font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex items-center  rounded-lg border border-transparent bg-primary px-3 py-2 md:px-5 md:py-1 font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50"
               >
                 View
                 <svg

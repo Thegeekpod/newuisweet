@@ -64,7 +64,7 @@ export default function ContactFormSubmit({service}) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 rounded-lg p-6 xl:p-6">
+    <form onSubmit={handleSubmit} className="space-y-6 rounded-lg p-1 xl:p-6">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-2 block text-sm font-medium">

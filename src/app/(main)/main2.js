@@ -5,7 +5,7 @@ const Intro = lazy(() => import('@/component/main/common/Intro'));
 
 
 const Main2 = ({ children, pagename }) => {
-    console.log(pagename)
+   
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
