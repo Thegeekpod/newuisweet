@@ -5,8 +5,9 @@ import Swal from 'sweetalert2'; // Import SweetAlert2
 import { fetchProjects,deleteProjecte } from '../function';
 import Pagination from '@/component/admin/common/Pagination';
 import SearchBar from '@/component/admin/common/SearchBar';
-
+import { unstable_noStore as noStore } from 'next/cache';
 const ProjectList = () => {
+  noStore();
   const [projectes, setProjectes] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);

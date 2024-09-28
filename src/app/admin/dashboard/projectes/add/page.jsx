@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { addProject } from '../function'; // Assuming this is your function to add a project.
 import { Editor } from '@tinymce/tinymce-react';
-
+import { unstable_noStore as noStore } from 'next/cache';
 const AddForm = () => {
+  noStore();
   const [formData, setFormData] = useState({
     title: '',
     description: '',

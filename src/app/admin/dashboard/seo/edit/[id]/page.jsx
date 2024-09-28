@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getSEOById, editSEO } from "../../function"; // Import getSEOById and editSEO functions
-
+import { unstable_noStore as noStore } from 'next/cache';
 const EditForm = ({ params}) => {
+  noStore();
   const id = params.id;
   const [formData, setFormData] = useState({
     pagename: "",

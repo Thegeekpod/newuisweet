@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { addSEO } from "../function"; // Import SEO function
-
+import { unstable_noStore as noStore } from 'next/cache';
 const AddForm = () => {
+  noStore();
   const [formData, setFormData] = useState({
     pagename: "", 
     seoTitle: "",
