@@ -167,7 +167,7 @@ import { deleteEnquiry, fetchEnquiry } from '@/app/admin/dashboard/enquiry/Funct
             <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
-                handlePageChange={handlePageChange}
+                onPageChange={handlePageChange}
             />
         </div>
     );

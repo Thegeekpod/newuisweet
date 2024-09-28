@@ -152,9 +152,9 @@ const SEOList = () => {
       {/* Pagination Component */}
       {filteredSEOEntries.length > seoEntriesPerPage && (
         <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
         />
       )}
     </div>

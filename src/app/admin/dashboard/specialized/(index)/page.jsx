@@ -147,9 +147,9 @@ const handleeditSpecialized = (id) =>{
 
       {/* Pagination */}
       <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
+       currentPage={currentPage}
+       totalPages={totalPages}
+       onPageChange={handlePageChange}
       />
     </div>
   );
