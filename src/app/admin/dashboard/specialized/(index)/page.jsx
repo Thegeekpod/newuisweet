@@ -11,7 +11,7 @@ const SpecializedList = () => {
   const [specializeds, setSpecializeds] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [specializedsPerPage] = useState(5); // Adjust the number of items per page
+  const [specializedsPerPage] = useState(10); // Adjust the number of items per page
   const router = useRouter();
 
   useEffect(() => {

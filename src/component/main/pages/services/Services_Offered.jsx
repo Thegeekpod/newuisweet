@@ -32,17 +32,17 @@ const Services_Offered = ({ data, isLoading }) => {
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-10 lg:mt-14">
       <GetServices data={data} isLoading={isLoading}/>
       </div>
       {/* Image section */}
-      <div className="mt-10 aspect-video overflow-hidden rounded-lg bg-light dark:bg-dark-2 lg:mt-14">
+      {/* <div className="mt-10 aspect-video overflow-hidden rounded-lg bg-light dark:bg-dark-2 lg:mt-14">
         <img
           src="assets/img/blog-img-1.jpg"
           alt=""
           className="h-full w-full rounded-lg object-cover"
         />
-      </div>
+      </div> */}
     </>
   )
 }

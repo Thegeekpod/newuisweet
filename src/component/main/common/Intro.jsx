@@ -78,6 +78,37 @@ const Intro = () => {
         </div>
         {/* Social */}
         <div className="mt-8 flex flex-wrap items-center gap-2">
+  {/* Existing Social Icons */}
+  
+  
+
+  {/* New Links */}
+  <a
+    href="/privacy-policy"
+    className="text-slate-600 hover:text-primary transition-colors dark:text-slate-500 dark:hover:text-primary"
+  >
+    Privacy Policy
+  </a> |
+  <a
+    href="/terms-conditions"
+    className="text-slate-600 hover:text-primary transition-colors dark:text-slate-500 dark:hover:text-primary"
+  >
+    Refund Policy
+  </a> 
+  <a
+    href="/refund-policy"
+    className="text-slate-600 hover:text-primary transition-colors dark:text-slate-500 dark:hover:text-primary"
+  >
+    Terms & Conditions
+  </a> |
+  <a
+    href="/refund-policy"
+    className="text-slate-600 hover:text-primary transition-colors dark:text-slate-500 dark:hover:text-primary"
+  >
+    Delivery-process
+  </a>
+</div>
+{/* <div className="mt-8 flex flex-wrap items-center gap-2">
           <a
             href="#"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-transparent text-center text-slate-600 transition hover:text-primary focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50 dark:border-transparent dark:bg-dark-2 dark:text-slate-500 dark:hover:text-primary"
@@ -130,7 +161,7 @@ const Intro = () => {
               <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022ZM10 15.5l6-3.5-6-3.5v7Z" />
             </svg>
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   </div>

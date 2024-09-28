@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { FaHome, FaNewspaper, FaConciergeBell, FaEnvelope, FaBiohazard } from 'react-icons/fa'; // Import the appropriate icons from react-icons
+import { FaHome, FaNewspaper, FaConciergeBell, FaEnvelope, FaBiohazard, FaBriefcase, FaCubes, FaAddressCard, FaGem } from 'react-icons/fa'; // Import the appropriate icons from react-icons
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
@@ -39,25 +39,25 @@ export const Sidebar = () => {
           </li>
           <li className="mb-4">
             <Link href="/admin/dashboard/job-post" className={`hover:bg-gray-700 p-2 rounded block flex items-center ${router === 'job-post' ? 'bg-gray-700' : ''}`}>
-            <FaEnvelope className="h-6 w-6 mr-3" />
+            <FaBriefcase className="h-6 w-6 mr-3" />
               Job Post
             </Link>
           </li>
           <li className="mb-4">
             <Link href="/admin/dashboard/projectes" className={`hover:bg-gray-700 p-2 rounded block flex items-center ${router === 'projectes' ? 'bg-gray-700' : ''}`}>
-            <FaEnvelope className="h-6 w-6 mr-3" />
+            <FaCubes className="h-6 w-6 mr-3" />
             Projectes
             </Link>
           </li>
           <li className="mb-4">
             <Link href="/admin/dashboard/enquiry" className={`hover:bg-gray-700 p-2 rounded block flex items-center ${router === 'enquiry' ? 'bg-gray-700' : ''}`}>
-            <FaEnvelope className="h-6 w-6 mr-3" />
+            <FaAddressCard className="h-6 w-6 mr-3" />
               Enquiry Form
             </Link>
           </li>
           <li className="mb-4">
             <Link href="/admin/dashboard/seo" className={`hover:bg-gray-700 p-2 rounded block flex items-center ${router === 'seo' ? 'bg-gray-700' : ''}`}>
-            <FaEnvelope className="h-6 w-6 mr-3" />
+            <FaGem className="h-6 w-6 mr-3" />
               Seo Config
             </Link>
           </li>

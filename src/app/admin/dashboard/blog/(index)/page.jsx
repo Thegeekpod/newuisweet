@@ -12,7 +12,7 @@ const ProjectList = () => {
   const [blogs, setBlogs] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [blogsPerPage] = useState(5); // Adjust the number of items per page
+  const [blogsPerPage] = useState(10); // Adjust the number of items per page
   const router = useRouter();
 
   useEffect(() => {

@@ -10,7 +10,7 @@ const SEOList = () => {
   const [seoEntries, setSEOEntries] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [seoEntriesPerPage] = useState(5); // Adjust the number of items per page
+  const [seoEntriesPerPage] = useState(10); // Adjust the number of items per page
   const router = useRouter();
 
   useEffect(() => {

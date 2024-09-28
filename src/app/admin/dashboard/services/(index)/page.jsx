@@ -11,7 +11,7 @@ const ServiceList = () => {
   const [services, setServices] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [servicesPerPage] = useState(5); // Adjust the number of items per page
+  const [servicesPerPage] = useState(10); // Adjust the number of items per page
   const router = useRouter();
 
   useEffect(() => {

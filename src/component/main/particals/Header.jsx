@@ -5,6 +5,7 @@ import MobileHeader from './MobileHeader';
 import Navigationmenu from './Navigationmenu';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { useTheme } from '@/app/(main)/hooks/ThemeContext';
+import Link from 'next/link';
 
 
 export default function Header() {
@@ -85,8 +86,9 @@ export default function Header() {
           <div className="hidden items-center gap-4 lg:flex">
             {/* Theme appearance toggler */}
           <ThemeToggle/>
-            <a
-              href="contact.html"
+            <Link
+
+              href="/contact-us"
               className="inline-flex items-center gap-2 rounded-lg bg-dark px-6 py-4 text-center text-base font-semibold leading-tight text-white transition hover:bg-primary dark:bg-dark-2 dark:text-white dark:hover:bg-primary dark:hover:text-white"
             >
               <span>Let{"'"}s Talk</span>
@@ -103,7 +105,7 @@ export default function Header() {
                 <path d="M17.5 11.667v-5h-5" />
                 <path d="m17.5 6.667-7.5 7.5-7.5-7.5" />
               </svg>
-            </a>
+            </Link>
           </div>
           {/* Navigation toggler */}
           <button onClick={handleToggle}

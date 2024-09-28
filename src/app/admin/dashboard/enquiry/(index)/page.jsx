@@ -12,7 +12,7 @@ import { deleteEnquiry, fetchEnquiry } from '@/app/admin/dashboard/enquiry/Funct
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedEnquiry, setSelectedEnquiry] = useState(null);
-    const dataPerPage = 5; // Items per page
+    const dataPerPage = 10; // Items per page
 
     // Fetch data when component mounts
     useEffect(() => {

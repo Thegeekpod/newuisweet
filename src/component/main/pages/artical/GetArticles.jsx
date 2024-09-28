@@ -15,7 +15,7 @@ const GetArticles = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true); // Loading state
-  const itemsPerPage = 2; // Number of items to show per page
+  const itemsPerPage = 12; // Number of items to show per page
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -113,6 +113,7 @@ const GetArticles = ({ data }) => {
             ))}
           </div>
           {/* Pagination */}
+          {totalPages > 1 && (
           <nav className="mt-10 flex items-center justify-center gap-1.5">
             <button
               type="button"
@@ -173,7 +174,7 @@ const GetArticles = ({ data }) => {
                 />
               </svg>
             </button>
-          </nav>
+          </nav>)}
           {/* End Pagination */}
         </>
       )}

@@ -10,7 +10,7 @@ const ProjectList = () => {
   const [projectes, setProjectes] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [projectesPerPage] = useState(5); // Adjust the number of items per page
+  const [projectesPerPage] = useState(10); // Adjust the number of items per page
   const router = useRouter();
 
   useEffect(() => {
