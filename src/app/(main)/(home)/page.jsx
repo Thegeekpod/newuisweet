@@ -27,7 +27,7 @@ export default async function Home() {
     },
   })
   const shuffledServices = services.sort(() => 0.5 - Math.random());
-  const randomServices = shuffledServices.slice(0, 4);
+  const randomServices = shuffledServices.slice(0, 8);
   if (randomServices.length > 0) {
     isLoading = false;
   }
@@ -68,7 +68,10 @@ const schema = await prisma.sEO.findFirst({
   return (
     <>
      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: (schema?.schema || '')}} />
-      <div className="grid grid-cols-1 gap-4 lg:gap-6">
+     
+
+      <Services data={randomServices} isLoading={isLoading} />
+       <div className="grid grid-cols-1 gap-4 lg:gap-6">
         <OurSpecilization data={randomSpecialized} />
         <TodayOffer />
       </div>
@@ -76,9 +79,12 @@ const schema = await prisma.sEO.findFirst({
         <OurProduct data={projects}/>
         <Articales data ={blog}/>
       </div>
-
-      <Services data={randomServices} isLoading={isLoading} />
-      <Career data={job}/>
+      <div className="grid grid-cols-1 gap-4 lg:gap-6">
+      
+      <TodayOffer />
+        <Career data={job}/>
+      </div>
+     
     </>
 
   );
