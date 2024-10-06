@@ -83,7 +83,7 @@ const Intro = () => {
   
 
   {/* New Links */}
-  <a
+  {/* <a
     href="/privacy-policy"
     className="text-slate-600 hover:text-primary transition-colors dark:text-slate-500 dark:hover:text-primary"
   >
@@ -106,7 +106,7 @@ const Intro = () => {
     className="text-slate-600 hover:text-primary transition-colors dark:text-slate-500 dark:hover:text-primary"
   >
     Delivery-process
-  </a>
+  </a> */}
 </div>
 {/* <div className="mt-8 flex flex-wrap items-center gap-2">
           <a
