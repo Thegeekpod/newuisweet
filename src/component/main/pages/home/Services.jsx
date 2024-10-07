@@ -3,7 +3,7 @@ import { GetServices } from '../../common/GetServices'
 import Link from 'next/link'
 
 
-const Services = ({ data, isLoading }) => {
+const Services = ({ data }) => {
   return (
     <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2">
         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -30,7 +30,7 @@ const Services = ({ data, isLoading }) => {
           </Link>
         </div>
         <div className="mt-6">
-        <GetServices data={data} isLoading={isLoading}/>
+        <GetServices data={data} />
         </div>
       </div>
   )

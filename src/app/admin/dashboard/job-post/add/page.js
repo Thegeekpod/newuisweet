@@ -213,7 +213,7 @@ const JobPostForm = () => {
             type="submit"
             className="bg-blue-500 w-full text-white py-3 px-6 rounded shadow-lg hover:bg-blue-600"
           >
-            Add Service
+            Add Job
           </button>
         </div>
       </form>

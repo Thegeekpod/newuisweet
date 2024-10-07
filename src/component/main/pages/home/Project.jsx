@@ -1,167 +1,96 @@
-import React from 'react'
+"use client";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
-const Project = () => {
+const Slider = dynamic(() => import('react-slick'), { ssr: false });
+
+const ProjectSlider = ({ data }) => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+  };
+
   return (
-    <div className="grid grid-cols-1 gap-4 lg:gap-6">
-      {/* Work Experience */}
-      <div className="group rounded-2xl bg-white px-6 pt-0 shadow dark:bg-black dark:shadow-dark">
-        <div className='flex flex-wrap items-center justify-between gap-2'>
-          <h3 className="relative z-10 bg-white pb-2 pt-6 text-2xl font-semibold dark:bg-black dark:text-light">
-            Our Products
-          </h3>
-          <a
-            href="portfolio.html"
-            className="inline-flex items-center justify-center gap-2 border-b text-center text-base text-primary transition hover:border-b-primary dark:border-b-muted dark:hover:border-b-primary"
+    <div className="group rounded-2xl bg-white px-6 pt-0 shadow dark:bg-black dark:shadow-dark">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h3 className="relative z-10 bg-white pb-2 pt-6 text-2xl font-semibold dark:bg-black dark:text-light">
+          Our Projects
+        </h3>
+        <Link
+          href="/projects"
+          className="inline-flex items-center justify-center gap-2 border-b text-center text-base text-primary transition hover:border-b-primary dark:border-b-muted dark:hover:border-b-primary"
+        >
+          <span>See All</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+            className="h-5 w-5"
           >
-            <span>See All</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-              className="h-5 w-5"
-            >
-              <path d="M4.167 10h11.666m-4.999 5 5-5m-5-5 5 5" />
-            </svg>
-          </a>
-        </div>
-        <div className="max-h-[200px] space-y-4 overflow-hidden pb-6 pt-4 [&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-0">
-          <div className="animate-scrollY space-y-4 group-hover:[animation-play-state:paused]">
-            <div className="flex flex-col gap-1 md:flex-row md:gap-10 justify-between">
-
-              <div className="flex items-center gap-3">
-                <div className="grid h-8 w-8 shrink-0 place-content-center rounded-lg bg-light dark:bg-dark-2">
-                  <img
-                    src="/assets/img/google.svg"
-                    alt=""
-                    className="h-5 w-5"
-                  />
-                </div>
-                <div className="">
-                  <h6 className="text-base font-semibold text-dark dark:text-light/70">
-                    Google Inc.
-                  </h6>
-                  <p className="text-sm text-muted">
-                    Senior Product Designer
-                  </p>
-                </div>
-              </div>
-              <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Use
-                <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                </svg>
-              </button>
-
-            </div>
-
-          </div>
-          <div className="animate-scrollY space-y-4 group-hover:[animation-play-state:paused]">
-            <div className="flex flex-col gap-1 md:flex-row md:gap-10 justify-between">
-
-              <div className="flex items-center gap-3">
-                <div className="grid h-8 w-8 shrink-0 place-content-center rounded-lg bg-light dark:bg-dark-2">
-                  <img
-                    src="/assets/img/google.svg"
-                    alt=""
-                    className="h-5 w-5"
-                  />
-                </div>
-                <div className="">
-                  <h6 className="text-base font-semibold text-dark dark:text-light/70">
-                    Google Inc.
-                  </h6>
-                  <p className="text-sm text-muted">
-                    Senior Product Designer
-                  </p>
-                </div>
-              </div>
-              <button type="button" className="inline-flex items-center  rounded-lg border border-transparent bg-primary px-5 py-1 font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50">
-                Use
-                <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                </svg>
-              </button>
-            </div>
-
-          </div>
-        </div>
+            <path d="M4.167 10h11.666m-4.999 5 5-5m-5-5 5 5" />
+          </svg>
+        </Link>
       </div>
-      {/* Expertise */}
-      <div className="group rounded-2xl bg-white px-6 pt-0 shadow dark:bg-black dark:shadow-dark">
-        <div className='flex flex-wrap items-center justify-between gap-2'>
-          <h3 className="relative z-10 bg-white pb-2 pt-6 text-2xl font-semibold dark:bg-black dark:text-light">
-            Important Notice
-          </h3>
 
-        </div>
-        <div className="max-h-[200px] space-y-4 overflow-hidden pb-6 pt-4 [&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-0">
-          <div className="animate-scrollY space-y-4 group-hover:[animation-play-state:paused]">
-            <div className="flex flex-col gap-1 md:flex-row md:gap-10 justify-between">
-
-              <div className="flex items-center gap-3">
-                <div className="grid h-8 w-8 shrink-0 place-content-center rounded-lg bg-light dark:bg-dark-2">
-                  <img
-                    src="/assets/img/google.svg"
-                    alt=""
-                    className="h-5 w-5"
-                  />
-                </div>
-                <div className="">
-                  <h6 className="text-base font-semibold text-dark dark:text-light/70">
-                    Google Inc.
-                  </h6>
-                  <p className="text-sm text-muted">
-                    Senior Product Designer
+      <div className="mt-4">
+        <Slider {...settings}>
+          {data.map((project, index) => (
+            <div key={index} className="project-slide">
+              <div className="relative group hover-trigger">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-auto object-cover max-h-[245px] rounded-lg opacity-100 transition-opacity duration-300 group-hover:opacity-50"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <h4 className="text-center text-base text-primary transition">
+                    {project.title}
+                  </h4>
+                  <p className="mt-2 text-muted dark:text-light/70">
+                    <span
+                      dangerouslySetInnerHTML={{ __html: project.description }}
+                    />
                   </p>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    className="inline-flex items-center justify-center gap-2 border-b text-center text-base text-primary transition hover:border-b-primary dark:border-b-muted dark:hover:border-b-primary"
+                  >
+                    <span>Visit</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
+                      className="h-5 w-5"
+                    >
+                      <path d="M4.167 10h11.666m-4.999 5 5-5m-5-5 5 5" />
+                    </svg>
+                  </a>
                 </div>
               </div>
-              <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                View
-                <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                </svg>
-              </button>
-
             </div>
-
-          </div>
-          <div className="animate-scrollY space-y-4 group-hover:[animation-play-state:paused]">
-            <div className="flex flex-col gap-1 md:flex-row md:gap-10 justify-between">
-
-              <div className="flex items-center gap-3">
-                <div className="grid h-8 w-8 shrink-0 place-content-center rounded-lg bg-light dark:bg-dark-2">
-                  <img
-                    src="/assets/img/google.svg"
-                    alt=""
-                    className="h-5 w-5"
-                  />
-                </div>
-                <div className="">
-                  <h6 className="text-base font-semibold text-dark dark:text-light/70">
-                    Google Inc.
-                  </h6>
-                  <p className="text-sm text-muted">
-                    Senior Product Designer
-                  </p>
-                </div>
-              </div>
-              <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                View
-                <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                </svg>
-              </button>
-            </div>
-
-          </div>
-        </div>
+          ))}
+        </Slider>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Project
+export default ProjectSlider;

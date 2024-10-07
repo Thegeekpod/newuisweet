@@ -1,6 +1,6 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import prisma from '../../../../../lib/prisma';
-import FAQ from '@/component/main/pages/services/FAQ';
+import FAQ from '@/component/main/common/FAQ';
 
 export async function generateMetadata({ params }) {
   // Disable caching for this page
@@ -180,6 +180,10 @@ export default async function Page({ params }) {
       {data?.faqs.length > 0 && (
         <>
           <hr />
+          <h3 className="text-2xl font-semibold dark:text-light mt-10 lg:mt-10">
+      Frequently Asked Questions
+    </h3>
+     
           <FAQ data={data?.faqs} />
           <hr className='mt-10' />
         </>

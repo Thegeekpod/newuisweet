@@ -1,7 +1,7 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import prisma from '../../../../../lib/prisma';
 import Link from 'next/link';
-import FAQ from '@/component/main/pages/services/FAQ';
+import FAQ from '@/component/main/common/FAQ';
 import ContactFormSubmit from '@/component/main/pages/contact/ContactFormSubmit';
 
 // Function to generate SEO metadata and structured data
@@ -150,7 +150,16 @@ export default async function Page({ params }) {
       {service?.faqs.length > 0 && <hr />}
 
       {/* FAQ Section */}
-      {service?.faqs.length > 0 && <FAQ data={service.faqs} />}
+      {service?.faqs.length > 0 &&
+      
+     ( <><h3 className="text-2xl font-semibold dark:text-light mt-10 lg:mt-10">
+      Frequently Asked Questions
+    </h3>
+      <FAQ data={service.faqs} />
+      </>
+      )
+      
+      }
 
       {service?.faqs.length > 0 && <hr className='mt-10' />}
 

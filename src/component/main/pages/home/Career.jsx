@@ -1,9 +1,13 @@
 import Link from 'next/link';
 import React from 'react';
+import Stats from './Seats';
 
 const Career = ({ data }) => {
   return (
-    <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark">
+    <div>
+<Stats/>
+
+    <div className="rounded-2xl bg-white p-6  shadow dark:bg-black dark:shadow-dark">
       <marquee
         behavior="scroll"
         direction="left"
@@ -12,7 +16,7 @@ const Career = ({ data }) => {
         Available For Hire 🚀 Crafting Digital Experiences 🎨 Available For
         Hiring 🚀 Crafting Digital Experiences 🎨 Let{"'"}s👋 Work Together
       </marquee>
-      <div className="max-h-[200px] space-y-4 overflow-hidden pb-6 pt-4 [&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-0">
+      <div className="max-h-[200px] space-y-4 overflow-hidden pb-6 pt-4  [&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-0">
         {data.map((job) => (
           <div
             key={job.slug}
@@ -61,8 +65,10 @@ const Career = ({ data }) => {
           </div>
         ))}
       </div>
-  
+   
     </div>
+     
+   </div>
   );
 };
 

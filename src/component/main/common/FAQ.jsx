@@ -17,10 +17,8 @@ const FAQ = ({ data }) => {
      
       {data.length > 0 && (
         
-        <div className="mt-10 lg:mt-10">
-          <h3 className="text-2xl font-medium text-dark dark:text-light lg:text-3xl">
-            Frequently Asked Questions
-          </h3>
+        <div className="">
+         
           <div className="space-y-4 mt-8">
             {data.map((question, index) => (
               <div
@@ -31,7 +29,7 @@ const FAQ = ({ data }) => {
               >
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="inline-flex w-full items-center justify-between gap-x-3 px-6 py-5 text-start text-lg font-medium text-dark transition hover:text-muted dark:text-light/70 dark:hover:text-light focus:outline-none xl:text-2xl"
+                  className="inline-flex w-full items-center justify-between gap-x-3 px-6 py-5 text-start text-lg font-medium text-dark transition hover:text-muted dark:text-light/70 dark:hover:text-light focus:outline-none xl:text-xl"
                 >
                   <span>{question.question}</span>
                   <span

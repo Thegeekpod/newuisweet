@@ -2,31 +2,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const Skeleton = ({ width, height }) => (
-  <div
-    className="animate-pulse bg-gray-300 dark:bg-gray-700"
-    style={{ width, height }}
-  ></div>
-);
 
-export const GetServices = ({ data, isLoading }) => {
+
+export const GetServices = ({ data }) => {
   return (
     <>
       {/* Service cards */}
       <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-        {isLoading ? (
-          // Show skeletons while loading
-          [...Array(4)].map((_, index) => (
-            <div key={index} className="rounded-2xl bg-light p-2 text-center dark:bg-dark-2 md:p-4">
-              <div className="grid place-content-center rounded-lg bg-white p-6 dark:bg-black">
-                <Skeleton width="120px" height="120px" />
-              </div>
-              <div className="mt-3 text-base font-medium text-dark dark:text-light/70">
-                <Skeleton width="100px" height="20px" />
-              </div>
-            </div>
-          ))
-        ) : data?.length > 0 ? (
+        {data?.length > 0 ? (
           // Show services when data is available
           data.map((service, index) => (
             <div key={service.id || index}>

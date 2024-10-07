@@ -12,7 +12,7 @@ const JobPostsList = () => {
   const [jobPosts, setJobPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [jobPostsPerPage] = useState(1); // Adjust the number of items per page
+  const [jobPostsPerPage] = useState(10); // Adjust the number of items per page
   const router = useRouter();
 
   useEffect(() => {
