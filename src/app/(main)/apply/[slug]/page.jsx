@@ -1,6 +1,5 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import prisma from '../../../../../lib/prisma';
-import FAQ from '@/component/main/pages/services/FAQ';
 import JobApplyForm from '@/component/main/common/JobApplyForm';
 
 export async function generateMetadata({ params }) {
