@@ -45,7 +45,7 @@ const ProjectSlider = ({ data }) => {
         </Link>
       </div>
 
-      <div className="mt-3">
+      <div className="mt-3 pb-6">
         <Slider {...settings}>
           {data.map((project, index) => (
             <div key={index} className="project-slide">
