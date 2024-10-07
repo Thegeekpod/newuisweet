@@ -6,7 +6,7 @@ export default function Footer(){
   return (
     <>
  <footer className="text-center">
-  <div className="flex flex-row items-center justify-between gap-4 text-sm text-muted dark:text-light/70">
+  <div className="flex flex-col lg:flex-row items-center justify-between gap-4 text-sm text-muted dark:text-light/70">
   <div>
   <p className="text-sm dark:text-light/70">
     © {currentYear} All rights reserved by ♥{" "}
@@ -18,12 +18,12 @@ export default function Footer(){
     </a>
   </p>
   </div>
-  <div className=" flex flex-row gap-4">
+  <div className=" flex flex-row gap-3">
     <a
       href="/privacy-policy"
       className="text-primary transition hover:text-blue-600"
     >
-      Privacy Policy
+      Policy
     </a>
     <a
       href="/terms-and-conditions"
@@ -31,12 +31,7 @@ export default function Footer(){
     >
       Terms & Conditions
     </a>
-    <a
-      href="/refund-policy"
-      className="text-primary transition hover:text-blue-600"
-    >
-      Refund Policy
-    </a>
+   
     <a
       href="/sitemap"
       className="text-primary transition hover:text-blue-600"
