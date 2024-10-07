@@ -45,7 +45,7 @@ const ProjectSlider = ({ data }) => {
         </Link>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-3">
         <Slider {...settings}>
           {data.map((project, index) => (
             <div key={index} className="project-slide">
@@ -53,17 +53,13 @@ const ProjectSlider = ({ data }) => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-auto object-cover max-h-[245px] rounded-lg opacity-100 transition-opacity duration-300 group-hover:opacity-50"
+                  className="w-full h-auto object-cover max-h-[200px] rounded-lg opacity-100 transition-opacity duration-300 group-hover:opacity-50"
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <h4 className="text-center text-base text-primary transition">
                     {project.title}
                   </h4>
-                  <p className="mt-2 text-muted dark:text-light/70">
-                    <span
-                      dangerouslySetInnerHTML={{ __html: project.description }}
-                    />
-                  </p>
+                  
                   <a
                     href={project.url}
                     target="_blank"
