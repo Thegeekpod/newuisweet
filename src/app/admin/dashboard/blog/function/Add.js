@@ -40,6 +40,8 @@ export async function addBlog(formData) {
   try {
     const title = formData.get('title');
     const description = formData.get('description');
+    const short_description = formData.get('short_description');
+
     const imageFile = formData.get('image');
     const tagString = formData.get('tag'); // Updated to receive a string
     const seoTitle = formData.get('seoTitle');
@@ -73,6 +75,7 @@ export async function addBlog(formData) {
       data: {
         title,
         description,
+        short_description,
         image: `/uploads/blogimage/${uniqueFilename}`, // Store the relative path to the image
         slug,
         tag: tagsArray, // Store the tags as an array
@@ -95,6 +98,7 @@ export async function editBlog(formData, blogId) {
   try {
     const title = formData.get('title');
     const description = formData.get('description');
+    const short_description = formData.get('short_description');
     const imageFile = formData.get('image');
     const tagString = formData.get('tag'); // Updated to receive a string
     const seoTitle = formData.get('seoTitle');
@@ -153,6 +157,7 @@ export async function editBlog(formData, blogId) {
       data: {
         title: title || existingBlog.title,
         description: description || existingBlog.description,
+        short_description: short_description || existingBlog.short_description,
         image: newImagePath,
         slug,
         tag: tagsArray, // Update tags array

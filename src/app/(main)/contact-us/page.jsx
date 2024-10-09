@@ -13,7 +13,7 @@ const schema = await prisma.sEO.findFirst({
 
     <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
     <div className="">
-      <h2 className="text-3xl font-semibold leading-tight text-dark dark:text-light lg:text-[40px] lg:leading-tight">
+      <h2 className="text-2xl font-semibold text-dark dark:text-light">
         Let{"'"}s 👋 <span className="text-primary">Work</span> Together
       </h2>
       <p className="mt-4 text-lg text-muted dark:text-light/70">

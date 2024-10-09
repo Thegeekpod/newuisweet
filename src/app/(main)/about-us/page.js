@@ -1,11 +1,10 @@
 import Reviews from '@/component/main/common/Reviews';
 import About_Section from '@/component/main/pages/about/About_Section';
-import Awards from '@/component/main/pages/services/Awards';
 import FooterScroller from '@/component/main/pages/services/FooterScroller';
-import Parner from '@/component/main/pages/services/Parner';
 import React, { lazy } from 'react'
 import prisma from '../../../../lib/prisma';
 import { unstable_noStore as noStore } from 'next/cache';
+import OurPartners from '@/component/main/pages/home/OurPartners';
 const page = async() => {
   //seo
 const schema = await prisma.sEO.findFirst({
@@ -17,8 +16,27 @@ const schema = await prisma.sEO.findFirst({
 
       <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
         <About_Section />
-        <Parner />
-        <Reviews />
+
+
+        <div className="mt-10 lg:mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="group rounded-2xl bg-white px-6 py-4 shadow dark:bg-black dark:shadow-dark ">
+          <h2 className="text-2xl font-bold text-center mb-6">Our Mission</h2>
+          <p className="text-muted dark:text-light/70">
+            Our mission is to deliver exceptional IT solutions, helping businesses thrive with cutting-edge technology and innovation.
+          </p>
+        </div>
+
+
+        <div className="group rounded-2xl bg-white px-6 py-4 shadow dark:bg-black dark:shadow-dark ">
+          <h2 className="text-2xl font-bold text-center mb-6">Our Vision</h2>
+          <p className="text-muted dark:text-light/70">
+            Our vision is to be the global leader in IT services, recognized for our quality, customer satisfaction, and innovative solutions.
+          </p>
+        </div>
+        </div>
+        <div className="mt-10 lg:mt-14">
+        <OurPartners/>
+        </div>
         <FooterScroller />
       </div>
     </>

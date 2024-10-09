@@ -33,7 +33,7 @@ const schema = await prisma.sEO.findFirst({
 
         <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
             <div>
-                <h2 className="text-3xl font-semibold leading-tight text-dark dark:text-light lg:text-[40px] lg:leading-tight">
+                <h2 className="text-2xl font-semibold text-dark dark:text-light">
                     Check Out Our Latest <span className="text-primary">Projects</span>
                 </h2>
                 <p className="mt-4 text-lg text-muted dark:text-light/70">
@@ -72,26 +72,26 @@ const schema = await prisma.sEO.findFirst({
                                     </svg>
                                 </a>
                             </div>
-                            <div className="flex flex-wrap items-start justify-between py-4 md:p-6">
+                            <div className="flex flex-wrap items-start justify-between py-2 ">
                                 <div>
-                                    <h3 className="text-lg font-medium md:text-xl lg:text-2xl">
+                                    <h3 className="text-lg font-medium md:text-xl lg:text-xl">
                                         <a
                                             href={project.url}
                                             target="_blank"
-                                            className="border-b border-transparent text-dark transition hover:border-b-primary hover:text-primary dark:text-light/80 dark:hover:text-primary"
+                                            className="border-b border-transparent text-xl font-semibold transition hover:border-b-primary hover:text-primary dark:text-light/80 dark:hover:text-primary"
                                         >
                                             {project.title}
                                         </a>
                                     </h3>
-                                    <p className="text-sm text-muted lg:text-base">
+                                    <div className="mt-2 text-muted dark:text-light/70">
                                         {/* Fixed HTML structure: No <div> inside <p> */}
                                         <span dangerouslySetInnerHTML={{ __html: project.description }} />
-                                    </p>
+                                    </div>
                                 </div>
                                 <a
                                     href={project.url}
                                     target="_blank"
-                                    className="inline-flex items-center justify-center gap-1 rounded bg-white px-3 py-2 text-center text-sm leading-none text-dark transition hover:text-primary dark:bg-black dark:text-light/70 dark:hover:text-primary"
+                                    className="mt-3 inline-flex items-center justify-center gap-1 rounded bg-white px-3 py-2 text-center text-sm leading-none text-dark transition hover:text-primary dark:bg-black dark:text-light/70 dark:hover:text-primary"
                                 >
                                     <span>Visit Site</span>
                                     <svg

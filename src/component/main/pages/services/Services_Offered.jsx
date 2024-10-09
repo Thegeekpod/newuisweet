@@ -11,10 +11,10 @@ const Services_Offered = ({ data, isLoading }) => {
     <>
       <div className="flex flex-col-reverse items-start gap-6 lg:flex-row lg:gap-10">
         <div className="">
-          <h2 className="text-3xl font-semibold text-dark dark:text-light lg:text-[40px]">
+          <h2 className="text-2xl font-semibold text-dark dark:text-light">
             Services I <span className="text-primary">Offered</span>
           </h2>
-          <p className="mt-4 text-lg text-muted dark:text-light/70 lg:mt-6 lg:text-2xl">
+          <p className="mt-4 text-lg text-muted dark:text-light/70">
             Transforming Ideas into Innovative Reality, Elevate Your Vision with
             Our Expert
             <span className="font-semibold text-dark dark:text-white">

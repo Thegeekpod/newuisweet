@@ -87,8 +87,10 @@ export default async function Home() {
       </div>
       <HomeFaq />
       <Career data={job}/>
-      <OurPartners/>
+      <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-3">
 
+      <OurPartners/>
+      </div>
     </>
 
   );

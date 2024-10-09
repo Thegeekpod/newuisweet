@@ -5,10 +5,10 @@ const About_Section = () => {
     <>
       <div className="flex flex-col-reverse items-start gap-6 lg:flex-row lg:gap-10">
           <div className="">
-            <h2 className="text-3xl font-semibold text-dark dark:text-light lg:text-[40px]">
+            <h2 className="text-2xl font-semibold text-dark dark:text-light ">
               Hi, This Is <span className="text-primary">Cris Rayaan</span> 👋
             </h2>
-            <p className="mt-4 text-lg text-muted dark:text-light/70 lg:mt-6 lg:text-2xl">
+            <p className="mt-4 text-lg text-muted dark:text-light/70">
               A Passionate
               <span className="font-semibold text-dark dark:text-white">
                 Full Stack Developer

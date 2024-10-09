@@ -75,7 +75,7 @@ const FAQ = ({ data }) => {
                   }`}
                 >
                   <div className="px-6 pb-5">
-                  <div  className='prose-content max-w-full'
+                  <div  className='prose-content max-w-full text-muted dark:text-light/70'
           dangerouslySetInnerHTML={{ __html: question.answer }}
         />
                   </div>

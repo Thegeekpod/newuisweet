@@ -33,9 +33,7 @@ const Services = async () => {
 
   });
 
-  if (data.length > 0) {
-    isLoading = false;
-  }
+
   //seo
   const schema = await prisma.sEO.findFirst({
     where: { pagename: 'Home' },
@@ -45,16 +43,16 @@ const Services = async () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: (schema?.schema || '') }} />
 
       <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
-        <Services_Offered data={data} isLoading={isLoading} />
+        <Services_Offered data={data}  />
 
         <div className="mt-10 lg:mt-14">
-          <h3 className="text-2xl font-medium text-dark dark:text-light lg:text-3xl">
+          <h3 className="text-2xl font-medium text-dark dark:text-light lg:text-2xl">
             Our Specialized Fields ✨ Worldwide
           </h3>
           <GetSpecialized data={specialized} layout={6} />
 
         </div>
-        <Reviews />
+        
         {randomFaqs.length > 0 &&
       
       ( <><h3 className="text-2xl font-semibold dark:text-light mt-10 lg:mt-10">
@@ -65,8 +63,9 @@ const Services = async () => {
        )
        
        }
-        
+        <div className="mt-10 lg:mt-14">
         <FooterScroller />
+        </div>
       </div>
     </>
   )

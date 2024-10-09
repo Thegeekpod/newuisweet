@@ -19,6 +19,7 @@ model Blogs {
   id              Int      @id @default(autoincrement())
   title           String
   description     String   @db.Text
+  short_description     String   @db.Text
   image           String?
   slug            String   @unique
   tag             Json?

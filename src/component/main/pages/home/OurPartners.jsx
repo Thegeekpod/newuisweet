@@ -39,7 +39,6 @@ export default function OurPartners() {
   };
 
   return (
-    <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-3">
       <div>
         <div className="flex flex-wrap items-center justify-between gap-2 pb-5">
           <h3 className="relative z-10 bg-white text-2xl font-semibold dark:bg-black dark:text-light">
@@ -133,6 +132,6 @@ export default function OurPartners() {
           </div>
         </Slider>
       </div>
-    </div>
+  
   );
 }
