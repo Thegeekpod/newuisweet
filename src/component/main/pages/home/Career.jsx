@@ -7,15 +7,31 @@ const Career = ({ data }) => {
     <div>
 <Stats/>
 
-    <div className="rounded-2xl bg-white p-6  shadow dark:bg-black dark:shadow-dark">
-      <marquee
-        behavior="scroll"
-        direction="left"
-        className="overflow-hidden text-nowrap rounded-lg bg-light p-3 text-lg font-medium text-muted dark:bg-dark-2"
-      >
-        Available For Hire 🚀 Crafting Digital Experiences 🎨 Available For
-        Hiring 🚀 Crafting Digital Experiences 🎨 Let{"'"}s👋 Work Together
-      </marquee>
+    <div className="rounded-2xl bg-white px-6 pt-0  shadow dark:bg-black dark:shadow-dark">
+      
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h3 className="relative z-10 bg-white pb-2 pt-6 text-2xl font-semibold dark:bg-black dark:text-light">
+        Join Us
+        </h3>
+        <Link
+          href="/career"
+          className="inline-flex items-center justify-center gap-2 border-b text-center text-base text-primary transition hover:border-b-primary dark:border-b-muted dark:hover:border-b-primary"
+        >
+          <span>See All</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+            className="h-5 w-5"
+          >
+            <path d="M4.167 10h11.666m-4.999 5 5-5m-5-5 5 5" />
+          </svg>
+        </Link>
+      </div>
       <div className="max-h-[200px] space-y-4 overflow-hidden pb-6 pt-4  [&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-0">
         {data.map((job) => (
           <div
@@ -41,7 +57,7 @@ const Career = ({ data }) => {
                 </div>
               </div>
               <Link
-                href={`/apply/${job.slug}`}
+                href={`/career/apply/${job.slug}`}
                 className="inline-flex items-center  rounded-lg border border-transparent bg-primary px-3 py-2 md:px-5 md:py-1 font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50"
               >
                 Apply
@@ -65,7 +81,14 @@ const Career = ({ data }) => {
           </div>
         ))}
       </div>
-   
+      <marquee
+        behavior="scroll"
+        direction="left"
+        className=" mb-6 overflow-hidden text-nowrap rounded-lg bg-light p-3 text-lg font-medium text-muted dark:bg-dark-2"
+      >
+        Available For Hire 🚀 Crafting Digital Experiences 🎨 Available For
+        Hiring 🚀 Crafting Digital Experiences 🎨 Let{"'"}s👋 Work Together
+      </marquee>
     </div>
      
    </div>

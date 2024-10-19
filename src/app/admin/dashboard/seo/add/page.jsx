@@ -94,6 +94,7 @@ const AddForm = () => {
             <option value="Projects">Projects</option>
             <option value="Articles">Articles</option>
             <option value="Contact">Contact</option>
+            <option value="Career">Career</option>
           </select>
         </div>
         <div>

@@ -1,6 +1,7 @@
 import { unstable_noStore as noStore } from 'next/cache';
-import prisma from '../../../../../lib/prisma';
+
 import JobApplyForm from '@/component/main/common/JobApplyForm';
+import prisma from '../../../../../../lib/prisma';
 
 export async function generateMetadata({ params }) {
   // Disable caching for this page
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }) {
     "@type": "BlogPosting",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${baseurl}/articles/${data.slug}`,
+      "@id": `${baseurl}/career/apply/${data.slug}`,
     },
     headline: data.seoTitle || data.title,
     image: {
@@ -86,13 +87,13 @@ export async function generateMetadata({ params }) {
     title: data.seoTitle || data.title,
     description: data.seoDescription || data.description,
     alternates: {
-      canonical: `${baseurl}/articles/${data.slug}`,
+      canonical: `${baseurl}/career/apply/${data.slug}`,
     },
     openGraph: {
       type: 'article',
       title: data.seoTitle || data.title,
       description: data.seoDescription || data.description,
-      url: `${baseurl}/articles/${data.slug}`,
+      url: `${baseurl}/career/apply/${data.slug}`,
       images: [
         {
           url: data.bannerImage ? `${baseurl}${data.bannerImage}` : `${baseurl}/logo.png`,

@@ -45,7 +45,7 @@ const Services = async () => {
       <div className="flex flex-col-reverse items-start gap-6 lg:flex-row lg:gap-10">
         <div className="">
           <h2 className="text-2xl font-semibold text-dark dark:text-light">
-            Services I <span className="text-primary">Offered</span>
+            Services We<span className="text-primary">Offered</span>
           </h2>
           <p className="mt-4 text-lg text-muted dark:text-light/70">
             Transforming Ideas into Innovative Reality, Elevate Your Vision with
@@ -61,7 +61,7 @@ const Services = async () => {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75 dark:bg-light" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
           </span>
-          <span>Available For Hire</span>
+          <span>Available for Collaboration</span>
         </div>
       </div>
       <div className="mt-10 lg:mt-14">
@@ -69,7 +69,7 @@ const Services = async () => {
         </div>
         <div className="mt-10 lg:mt-14">
           <h3 className="text-2xl font-medium text-dark dark:text-light lg:text-2xl">
-            Our Specialized Fields ✨ Worldwide
+          We Provide Services ✨ Worldwide
           </h3>
           <div className='mt-6'>
          <GetServices data={data} />

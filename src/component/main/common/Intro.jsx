@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import { FaWhatsapp } from 'react-icons/fa'
 
 const Intro = () => {
   return (
@@ -47,34 +48,12 @@ const Intro = () => {
             </svg>
             <span>Make a call</span>
           </a>
-          <button
-            type="button"
-            data-clipboard-text="shams.sujon.01@gmail.com"
-            data-clipboard-action="copy"
-            data-clipboard-success-text="Copied to clipboard"
-            className="js-clipboard hs-tooltip inline-flex items-center gap-x-1 lg:gap-x-2 rounded-lg border border-light bg-transparent lg:px-6 px-2 py-4 font-medium text-dark transition [--trigger:focus] hover:bg-light focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:text-light/70 dark:hover:bg-dark dark:hover:text-white"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-              className="h-6 w-6"
-            >
-              <path d="M8 10a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8Z" />
-              <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
-            </svg>
-            <span>Copy Email</span>
-            <span
-              className="hs-tooltip-content invisible z-10 hidden rounded-lg bg-gray-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 dark:bg-slate-700"
-              role="tooltip"
-            >
-              Copied to clipboard
-            </span>
-          </button>
+          <a href='https://wa.me/+918918789119' target='_blank' rel='noopener noreferrer' className=" inline-flex items-center gap-x-1 lg:gap-x-2 rounded-lg border bg-lime-50 border-light bg-transparent lg:px-6 px-2 py-4 font-medium text-dark transition [--trigger:focus] hover:text-white hover:bg-lime-500 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:text-light/70 dark:hover:bg-dark dark:hover:text-white">
+           
+           <FaWhatsapp className="h-6 w-6" />
+            <span>WhatsApp Us</span>
+          
+          </a>
         </div>
         {/* Social */}
         <div className="mt-8 flex flex-wrap items-center gap-2">

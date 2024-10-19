@@ -82,15 +82,15 @@ export default async function Home() {
       <div className="grid grid-cols-1 gap-4 lg:gap-6">
         {/* <Articales data={blog} /> */}
         {/* <OurProduct data={projects} /> */}
-        <ProjectSlider data={projects}/>
+        <ProjectSlider data={projects} />
 
       </div>
       <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-3">
 
-<OurPartners/>
-</div>
+        <OurPartners />
+      </div>
       <HomeFaq />
-      <Career data={job}/>
+      <Career data={job} />
 
     </>
 

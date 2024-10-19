@@ -25,7 +25,7 @@ const About_Section = () => {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75 dark:bg-light" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
-            <span>Available For Hire</span>
+            <span>Available for Collaboration</span>
           </div>
         </div>
         <div className="mt-8 flex flex-wrap justify-between gap-6 lg:mt-12 lg:gap-10">
