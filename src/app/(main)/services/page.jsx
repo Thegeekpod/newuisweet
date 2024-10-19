@@ -1,11 +1,10 @@
 import FAQ from '@/component/main/common/FAQ';
 import FooterScroller from '@/component/main/pages/services/FooterScroller';
-import Reviews from '@/component/main/common/Reviews';
-import Services_Offered from '@/component/main/pages/services/Services_Offered';
 import React, { lazy } from 'react'
 import prisma from '../../../../lib/prisma';
 import { unstable_noStore as noStore } from 'next/cache';
 import GetSpecialized from '@/component/main/common/GetSpecialized';
+import { GetServices } from '@/component/main/common/GetServices';
 const Services = async () => {
   noStore();
   //services
@@ -43,14 +42,38 @@ const Services = async () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: (schema?.schema || '') }} />
 
       <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
-        <Services_Offered data={data}  />
-
+      <div className="flex flex-col-reverse items-start gap-6 lg:flex-row lg:gap-10">
+        <div className="">
+          <h2 className="text-2xl font-semibold text-dark dark:text-light">
+            Services I <span className="text-primary">Offered</span>
+          </h2>
+          <p className="mt-4 text-lg text-muted dark:text-light/70">
+            Transforming Ideas into Innovative Reality, Elevate Your Vision with
+            Our Expert
+            <span className="font-semibold text-dark dark:text-white">
+              Product Design and Development
+            </span>
+            Services!
+          </p>
+        </div>
+        <div className="flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-light px-4 py-2 text-center text-base font-medium leading-none text-primary dark:bg-dark-2 lg:text-lg">
+          <span className="relative flex h-2 w-2 shrink-0">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75 dark:bg-light" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+          </span>
+          <span>Available For Hire</span>
+        </div>
+      </div>
+      <div className="mt-10 lg:mt-14">
+        <GetSpecialized data={specialized} layout={6} />
+        </div>
         <div className="mt-10 lg:mt-14">
           <h3 className="text-2xl font-medium text-dark dark:text-light lg:text-2xl">
             Our Specialized Fields ✨ Worldwide
           </h3>
-          <GetSpecialized data={specialized} layout={6} />
-
+          <div className='mt-6'>
+         <GetServices data={data} />
+</div>
         </div>
         
         {randomFaqs.length > 0 &&

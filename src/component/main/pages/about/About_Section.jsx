@@ -6,10 +6,10 @@ const About_Section = () => {
       <div className="flex flex-col-reverse items-start gap-6 lg:flex-row lg:gap-10">
           <div className="">
             <h2 className="text-2xl font-semibold text-dark dark:text-light ">
-              Hi, This Is <span className="text-primary">Cris Rayaan</span> 👋
+              Hi, This Is <span className="text-primary">Sweet Developers </span> 👋
             </h2>
             <p className="mt-4 text-lg text-muted dark:text-light/70">
-              A Passionate
+              A Passionate{' '}
               <span className="font-semibold text-dark dark:text-white">
                 Full Stack Developer
               </span>
@@ -17,11 +17,7 @@ const About_Section = () => {
               <span className="font-semibold text-dark dark:text-white">
                 Product Designer
               </span>
-              having
-              <span className="font-semibold text-dark dark:text-white">
-                12 years
-              </span>
-              of Experiences over 24+ Country Worldwide.
+             
             </p>
           </div>
           <div className="flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-light px-4 py-2 text-center text-base font-medium leading-none text-primary dark:bg-dark-2 lg:text-lg">
@@ -36,19 +32,19 @@ const About_Section = () => {
           <div className="flex flex-wrap items-start gap-6 lg:gap-10">
             <div className="">
               <h2 className="text-3xl font-semibold text-dark dark:text-light lg:text-[40px]">
-                <span>40</span>+
+                <span>02</span>+
               </h2>
               <p className="mt-2 text-muted">Year of Experience</p>
             </div>
             <div className="">
               <h2 className="text-3xl font-semibold text-dark dark:text-light lg:text-[40px]">
-                <span>86</span>+
+                <span>95</span>+
               </h2>
               <p className="mt-2 text-muted">Project Completed</p>
             </div>
             <div className="">
               <h2 className="text-3xl font-semibold text-dark dark:text-light lg:text-[40px]">
-                <span>72</span>+
+                <span>12</span>+
               </h2>
               <p className="mt-2 text-muted">Happy Client</p>
             </div>

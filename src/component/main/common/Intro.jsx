@@ -25,7 +25,7 @@ const Intro = () => {
           Welcome... 👋
         </h3>
         <p className="mt-2 text-muted dark:text-light/70">
-        SweetDevelopers, established two years ago, offers innovative IT services and products. Our expert team delivers custom software solutions and IT support, dedicated to client success and excellence.
+        Sweet Developers, established two years ago, offers innovative IT services and products. Our expert team delivers custom software solutions and IT support, dedicated to client success and excellence.
         </p>
         {/* CTA buttons */}
         <div className="mt-6 flex flex-wrap gap-2">

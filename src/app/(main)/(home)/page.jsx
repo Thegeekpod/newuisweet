@@ -85,12 +85,13 @@ export default async function Home() {
         <ProjectSlider data={projects}/>
 
       </div>
-      <HomeFaq />
-      <Career data={job}/>
       <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-3">
 
-      <OurPartners/>
-      </div>
+<OurPartners/>
+</div>
+      <HomeFaq />
+      <Career data={job}/>
+
     </>
 
   );

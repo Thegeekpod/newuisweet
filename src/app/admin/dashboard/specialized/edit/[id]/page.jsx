@@ -7,12 +7,7 @@ import { editSpecialized, getSpecializedById } from '../../function';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Skeleton = ({ width, height }) => (
-  <div
-    className="animate-pulse bg-gray-300 dark:bg-gray-700"
-    style={{ width, height }}
-  ></div>
-);
+
 
 const EditSpecialized = () => {
   noStore();
@@ -27,6 +22,7 @@ const EditSpecialized = () => {
     seoDescription: '',
     seoKeywords: '',
     schema : '',
+    category: '', 
   });
   const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(false); // Loading state
@@ -47,7 +43,10 @@ const EditSpecialized = () => {
           seoTitle: specialized.seoTitle,
           seoDescription: specialized.seoDescription,
           seoKeywords: specialized.seoKeywords,
-          schema : specialized.schema,        });
+          schema : specialized.schema,  
+          category: specialized.category,
+        
+        });
         setCurrentImage(specialized.image);
         setCurrentBannerImage(specialized.bannerImage);
         setFaqs(specialized.faqs); // Populate FAQs from the fetched data
@@ -223,6 +222,7 @@ const EditSpecialized = () => {
   )}
 </div>
 
+
 <div className="">
   <label
     htmlFor="bannerImage"
@@ -247,8 +247,32 @@ const EditSpecialized = () => {
     </div>
   )}
 </div>
-</div>
 
+
+</div>
+<div>
+  <label
+    htmlFor="category"
+    className="block text-sm font-medium text-gray-700"
+  >
+    Category
+  </label>
+  <select
+    name="category"
+    id="category"
+    value={formData.category}
+    onChange={handleChange}
+    className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+  >
+    <option value="">Select Category</option>
+    <option value="UI/UX Design">UI/UX Design</option>
+    <option value="Web Development">Web Development</option>
+    <option value="Digital Marketing">Digital Marketing</option>
+    <option value="App Development">App Development</option>
+    <option value="Software Development">Software Development</option>
+    <option value="Graphics Design">Graphics Design</option>
+  </select>
+</div>
         <div>
           <label
             htmlFor="seoTitle"

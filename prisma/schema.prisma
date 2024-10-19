@@ -76,6 +76,7 @@ model Specialized  {
   description     String     @db.Text
   image           String?
   bannerImage     String?
+  category     String?
   slug            String     @unique
   seoTitle        String?
   seoDescription  String?

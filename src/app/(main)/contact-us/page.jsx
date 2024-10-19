@@ -17,13 +17,16 @@ const schema = await prisma.sEO.findFirst({
         Let{"'"}s 👋 <span className="text-primary">Work</span> Together
       </h2>
       <p className="mt-4 text-lg text-muted dark:text-light/70">
-        I{"'"}m here to help if you{"'"}re searching for a product designer to bring your
-        idea to life or a design partner to help take your business to the next
-        level.
+      Whether you’re looking for a product designer to bring your ideas to life, a development partner to elevate your business, or expert digital marketing services to boost your brand’s online presence, Sweet Developers is here to help.
+      <br /><br />
+      We specialize in building seamless and scalable solutions that align with your business goals, ensuring every project delivers real results. Our digital marketing expertise spans SEO, social media marketing, PPC campaigns, email marketing, and content creation to help your business reach the right audience and grow sustainably.
+      <br /><br />  
+      With a collaborative approach, we ensure your needs are fully understood and implemented, creating products and strategies that drive meaningful impact.
       </p>
       
     </div>
     <div className="mt-10 lg:mt-14">
+      <p className='text-muted dark:text-light/70'>Let’s design, develop, and market your ideas to success. Get in touch today and let’s build something amazing!</p>
       <ContactFormSubmit/>
     </div>
     {/* Map */}
