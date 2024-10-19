@@ -54,7 +54,7 @@ const CareerPage = async ({ searchParams }) => {
                                     />
                                     <Link
                                           href={`/career/apply/${project.slug}`}
-                                        target="_blank"
+                                       
                                         className="project-gallery-link absolute left-1/2 top-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-content-center rounded-full bg-white text-primary shadow-lg transition lg:invisible lg:-translate-y-[40%] lg:opacity-0 lg:group-hover:visible lg:group-hover:-translate-y-1/2 lg:group-hover:opacity-100"
                                     >
                                         <svg
@@ -85,7 +85,7 @@ const CareerPage = async ({ searchParams }) => {
                                     </div>
                                     <Link
                                         href={`/career/apply/${project.slug}`}
-                                        target="_blank"
+                                       
                                         className="mt-3 inline-flex items-center justify-center gap-1 rounded bg-white px-3 py-2 text-center text-sm leading-none text-dark transition hover:text-primary dark:bg-black dark:text-light/70 dark:hover:text-primary"
                                     >
                                         <span>Apply Now</span>
