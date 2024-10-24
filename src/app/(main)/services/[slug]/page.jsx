@@ -133,7 +133,7 @@ export default async function Page({ params }) {
 
       {/* Service Description */}
       <article className="prose mt-6 dark:prose-invert xl:prose-lg prose-headings:font-medium prose-blockquote:border-primary lg:mt-10">
-        <h2>{service.title}</h2>
+        <h1 className='text-2xl font-medium text-dark dark:text-light lg:text-2xl'>{service.title}</h1>
         <div className='prose-content max-w-full'
           dangerouslySetInnerHTML={{ __html: service.description }}
         />

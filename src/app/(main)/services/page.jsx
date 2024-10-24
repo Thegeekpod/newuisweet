@@ -64,11 +64,14 @@ const Services = async () => {
           <span>Available for Collaboration</span>
         </div>
       </div>
-      <div className="mt-10 lg:mt-14">
+      <div className="mt-10 lg:mt-10">
+      <h3 className="text-2xl font-medium text-dark dark:text-light lg:text-2xl mb-[40px]">
+      Our Specialized Fields✨ Worldwide
+          </h3>
         <GetSpecialized data={specialized} layout={6} />
         </div>
         <div className="mt-10 lg:mt-14">
-          <h3 className="text-2xl font-medium text-dark dark:text-light lg:text-2xl">
+          <h3 className="text-2xl font-medium text-dark dark:text-light lg:text-2xl mb-[40px]">
           We Provide Services ✨ Worldwide
           </h3>
           <div className='mt-6'>

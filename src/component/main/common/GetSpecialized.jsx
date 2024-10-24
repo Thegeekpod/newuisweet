@@ -19,7 +19,7 @@ const GetSpecialized = ({ data, layout }) => {
     <>
       {data?.length > 0 && (
         <>
-          <div className={layout == "6" ? "grid grid-cols-6 gap-1.5 mt-6 mb-4" : "hidden"}>
+          <div className={layout == "6" ? "grid grid-cols-1  lg:grid-cols-6 lg:gap-1.5 mt-6 mb-4" : "hidden"}>
             {/* Left-aligned items */}
             <div className="col-span-1 grid grid-cols-1 gap-1.5">
               {categories.slice(0, categories.length - 6).map((category, index) => (
@@ -35,7 +35,7 @@ const GetSpecialized = ({ data, layout }) => {
             </div>
 
             {/* Right stacked top 3 and under 3 items */}
-            <div className="col-span-5 grid grid-cols-3 gap-1.5">
+            <div className="col-span-5 grid grid-cols-2 lg:grid-cols-3 gap-1.5 mt-2 lg:mt-0">
               {/* Top 3 items */}
               {categories.slice(-6, -3).map((category, index) => (
                 <button
