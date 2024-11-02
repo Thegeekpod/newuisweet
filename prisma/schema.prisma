@@ -156,3 +156,11 @@ model SEO {
   updatedAt        DateTime  @updatedAt
 
 }
+model Payment {
+  id            Int      @id @default(autoincrement())
+  projectName   String
+  amount        Float
+  paymentId     String   @unique
+  paymentStatus String   @default("PENDING") // New field for tracking payment status
+  createdAt     DateTime @default(now())
+}

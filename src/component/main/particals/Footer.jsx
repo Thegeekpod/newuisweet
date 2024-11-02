@@ -33,10 +33,10 @@ export default function Footer(){
     </a>
    
     <a
-      href="/sitemap"
+      href="/paynow"
       className="text-primary transition hover:text-blue-600"
     >
-      Sitemap
+      Paynow
     </a>
   </div>
   </div>
