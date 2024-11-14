@@ -2,9 +2,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { loadScript } from '@paypal/paypal-js';
 import { savePaymentToDatabase } from './savePayment';
-
+import { unstable_noStore as noStore } from 'next/cache';
 
 const PayPalButton = () => {
+  noStore();
   const [formData, setFormData] = useState({ amount: '', projectName: '' });
   const [isProcessing, setIsProcessing] = useState(false);
   const [showError, setShowError] = useState(false);

@@ -76,7 +76,7 @@ const GetSpecialized = ({ data, layout }) => {
               <Link key={index} href={`/specialized/${item.slug}`}>
                 <div className="text-center">
                   <div className="grid place-content-center rounded-lg bg-light p-3 dark:bg-dark-2">
-                    <Image width={40} height={40} src={item.image} alt={item.title} className="h-10 w-10 rounded-md" />
+                    <img width={40} height={40} src={item.image} alt={item.title} className="h-10 w-10 rounded-md" />
                   </div>
                   <p className="mt-1 text-base font-medium text-dark dark:text-light/70">
                     {item.title}
