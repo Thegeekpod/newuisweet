@@ -23,6 +23,7 @@ const EditSpecialized = () => {
     seoKeywords: '',
     schema : '',
     category: '', 
+    slug:'',
   });
   const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(false); // Loading state
@@ -45,6 +46,7 @@ const EditSpecialized = () => {
           seoKeywords: specialized.seoKeywords,
           schema : specialized.schema,  
           category: specialized.category,
+          slug: specialized.slug,
         
         });
         setCurrentImage(specialized.image);
@@ -192,6 +194,22 @@ const EditSpecialized = () => {
             onEditorChange={handleEditorChange}
           />
         </div>
+        <div>
+            <label
+              htmlFor="slug"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Slug
+            </label>
+            <input
+              type="text"
+              name="slug"
+              id="slug"
+              value={formData.slug}
+              onChange={handleChange}
+              className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
       </div>
 
       {/* Right Column (SEO Info and Images) */}

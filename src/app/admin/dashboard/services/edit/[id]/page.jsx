@@ -23,6 +23,7 @@ const EditService = () => {
     description: '',
     image: null,
     bannerImage: null,
+    slug:'',
     seoTitle: '',
     seoDescription: '',
     seoKeywords: '',
@@ -42,6 +43,7 @@ const EditService = () => {
           description: service.description,
           image: null,
           bannerImage: null,
+          slug:service.slug,
           seoTitle: service.seoTitle,
           seoDescription: service.seoDescription,
           seoKeywords: service.seoKeywords,
@@ -191,6 +193,22 @@ const EditService = () => {
                   "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
               }}
               onEditorChange={handleEditorChange}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="slug"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Slug
+            </label>
+            <input
+              type="text"
+              name="slug"
+              id="slug"
+              value={formData.slug}
+              onChange={handleChange}
+              className="block w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
         </div>

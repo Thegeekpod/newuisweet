@@ -137,6 +137,7 @@ export async function editSpecialized(formData, specializedId) {
     const faqs = JSON.parse(formData.get('faqs')); // Get FAQs from formData
     const schema = formData.get('schema');
     const category = formData.get('category');
+    const slug = formData.get('slug');
 
     if (!specializedId) {
       throw new Error('Specialized ID is required');
@@ -159,11 +160,13 @@ export async function editSpecialized(formData, specializedId) {
     }
 
     // Handle slug generation
-    let slug = existingSpecialized.slug;
-    if (title && title !== existingSpecialized.title) {
-      const baseSlug = generateSlug(title);
-      slug = await generateUniqueSlug(baseSlug);
-    }
+     // Handle slug validation
+     let newSlug = existingSpecialized.slug;
+     if (slug && slug !== existingSpecialized.slug) {
+       const baseSlug = slug.trim();
+       newSlug = await generateUniqueSlug(baseSlug); // Ensure slug uniqueness
+     }
+ 
 
        // Handle image upload
        let newImagePath = existingSpecialized.image;
@@ -201,7 +204,7 @@ export async function editSpecialized(formData, specializedId) {
         description: description || existingSpecialized.description,
         image: newImagePath,
         bannerImage: newBannerImagePath,
-        slug,
+        slug:newSlug,
         seoTitle: seoTitle || existingSpecialized.seoTitle,
         seoDescription: seoDescription || existingSpecialized.seoDescription,
         seoKeywords: seoKeywords || existingSpecialized.seoKeywords,

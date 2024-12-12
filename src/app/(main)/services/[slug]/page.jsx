@@ -133,7 +133,7 @@ export default async function Page({ params }) {
 
       {/* Service Description */}
       <article className="prose mt-6 dark:prose-invert xl:prose-lg prose-headings:font-medium prose-blockquote:border-primary lg:mt-10">
-        <h1 className='text-2xl font-medium text-dark dark:text-light lg:text-2xl'>{service.title}</h1>
+        {/* <h1 className='text-2xl font-medium text-dark dark:text-light lg:text-2xl'>{service.title}</h1> */}
         <div className='prose-content max-w-full'
           dangerouslySetInnerHTML={{ __html: service.description }}
         />
@@ -164,7 +164,7 @@ export default async function Page({ params }) {
       {service?.faqs.length > 0 && <hr className='mt-10' />}
 
       {/* Related Services */}
-      <div className="mt-10 lg:mt-14">
+      {/* <div className="mt-10 lg:mt-14">
         <h3 className="text-2xl font-semibold leading-tight text-dark dark:text-light lg:text-3xl lg:leading-tight">
           Popular Services
         </h3>
@@ -186,7 +186,7 @@ export default async function Page({ params }) {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
     </>
   );

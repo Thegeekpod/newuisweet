@@ -139,8 +139,10 @@ export async function editService(formData, serviceId) {
     const seoTitle = formData.get('seoTitle');
     const seoDescription = formData.get('seoDescription');
     const seoKeywords = formData.get('seoKeywords');
+    const slug = formData.get('slug'); // Use slug directly from form data
     const faqs = JSON.parse(formData.get('faqs')); // Get FAQs from formData
     const schema = formData.get('schema');
+
     if (!serviceId) {
       throw new Error('Service ID is required');
     }
@@ -161,11 +163,11 @@ export async function editService(formData, serviceId) {
       throw new Error('Service not found');
     }
 
-    // Handle slug generation
-    let slug = existingService.slug;
-    if (title && title !== existingService.title) {
-      const baseSlug = generateSlug(title);
-      slug = await generateUniqueSlug(baseSlug);
+    // Handle slug validation
+    let newSlug = existingService.slug;
+    if (slug && slug !== existingService.slug) {
+      const baseSlug = slug.trim();
+      newSlug = await generateUniqueSlug(baseSlug); // Ensure slug uniqueness
     }
 
     // Handle image upload
@@ -204,7 +206,7 @@ export async function editService(formData, serviceId) {
         description: description || existingService.description,
         image: newImagePath,
         bannerImage: newBannerImagePath,
-        slug,
+        slug: newSlug,
         seoTitle: seoTitle || existingService.seoTitle,
         seoDescription: seoDescription || existingService.seoDescription,
         seoKeywords: seoKeywords || existingService.seoKeywords,
@@ -253,7 +255,6 @@ export async function editService(formData, serviceId) {
     throw new Error('Failed to edit service.');
   }
 }
-
 
 
 
