@@ -146,7 +146,7 @@ export default async function Page({ params }) {
         <h3 className="text-2xl mt-3 font-semibold leading-tight text-dark dark: lg:text-3xl lg:leading-tight">
           Enquire Now
         </h3>
-        <p class="mt-2 text-muted dark:/70">Let's get started, Schedule a free consultation today.</p>
+        <p class="mt-2 text-muted dark:/70">Let{"'"}s get started, Schedule a free consultation today.</p>
         <ContactFormSubmit service={service.title} />
 
         {service?.faqs.length > 0 && <hr />}
