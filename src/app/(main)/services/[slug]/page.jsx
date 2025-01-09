@@ -133,7 +133,7 @@ export default async function Page({ params }) {
 
         {/* Service Description */}
         <article className="max-w-full lg:mt-6 lg:text-justify">
-         
+          {/* <h1 className='text-2xl font-medium text-dark dark:text-light lg:text-2xl'>{service.title}</h1> */}
           <div className='prose-content max-w-full lg:text-justify'
           dangerouslySetInnerHTML={{ __html: service.description }}
         />
@@ -143,10 +143,10 @@ export default async function Page({ params }) {
         <hr className='mt-6' />
 
         {/* Contact Form */}
-        <h3 className="text-2xl mt-3 font-semibold leading-tight text-dark dark: lg:text-3xl lg:leading-tight">
+        <h3 className="text-2xl mt-3 font-semibold leading-tight text-dark dark:text-light/70 lg:text-3xl lg:leading-tight">
           Enquire Now
         </h3>
-        <p class="mt-2 text-muted dark:/70">Let{"'"}s get started, Schedule a free consultation today.</p>
+        <p class="mt-2 text-muted dark:text-light/70">Let{"'"}s get started, Schedule a free consultation today.</p>
         <ContactFormSubmit service={service.title} />
 
         {service?.faqs.length > 0 && <hr />}
@@ -154,7 +154,7 @@ export default async function Page({ params }) {
         {/* FAQ Section */}
         {service?.faqs.length > 0 &&
 
-          (<><h3 className="text-2xl font-semibold dark: mt-10 lg:mt-10">
+          (<><h3 className="text-2xl font-semibold dark:text-light/70 mt-10 lg:mt-10">
             Frequently Asked Questions
           </h3>
             <FAQ data={service.faqs} />
@@ -167,7 +167,7 @@ export default async function Page({ params }) {
 
         {/* Related Services */}
         {/* <div className="mt-10 lg:mt-14">
-        <h3 className="text-2xl font-semibold leading-tight text-dark dark: lg:text-3xl lg:leading-tight">
+        <h3 className="text-2xl font-semibold leading-tight text-dark dark:text-light lg:text-3xl lg:leading-tight">
           Popular Services
         </h3>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:mt-8">
@@ -180,7 +180,7 @@ export default async function Page({ params }) {
               </div>
               <div className="mt-6">
                 <h2 className="text-xl font-medium xl:text-2xl">
-                  <Link href={`/services/${related.slug}`} className="inline-block text-dark transition hover:text-primary dark:/70 dark:hover:text-primary">
+                  <Link href={`/services/${related.slug}`} className="inline-block text-dark transition hover:text-primary dark:text-light/70 dark:hover:text-primary">
                     {related.title}
                   </Link>
                 </h2>
