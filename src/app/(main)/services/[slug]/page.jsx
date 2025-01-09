@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
   // Disable caching for this page
   noStore();
 
- 
+
   const slug = params.slug;
 
   // Fetch the service post from the database using Prisma
@@ -72,7 +72,7 @@ export async function generateMetadata({ params }) {
         },
       ],
     },
-   
+
   };
 }
 
@@ -117,55 +117,57 @@ export default async function Page({ params }) {
   const jsonSchema = JSON.stringify(schema);
   return (
     <>
-    <script
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: (service?.schema || jsonSchema) }}
       />
-    <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
-      {/* Banner Image */}
-      <figure className="aspect-video overflow-hidden rounded-lg">
-        <img
-          src={service.bannerImage}
-          alt={service.title || "Service Image"}
-          className="h-full w-full object-cover"
-        />
-      </figure>
+      <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
+        {/* Banner Image */}
+        <figure className="aspect-video overflow-hidden rounded-lg">
+          <img
+            src={service.bannerImage}
+            alt={service.title || "Service Image"}
+            className="h-full w-full object-cover"
+          />
+        </figure>
 
-      {/* Service Description */}
-      <article className="max-w-full lg:mt-6 ">
-        {/* <h1 className='text-2xl font-medium text-dark dark:text-light lg:text-2xl'>{service.title}</h1> */}
-        <div className='prose-content max-w-full lg:text-justify'
+        {/* Service Description */}
+        <article className="max-w-full lg:mt-6 lg:text-justify">
+         
+          <div className='prose-content max-w-full lg:text-justify'
           dangerouslySetInnerHTML={{ __html: service.description }}
         />
-      </article>
+ 
+        </article>
 
-      <hr />
+        <hr className='mt-6' />
 
-      {/* Contact Form */}
-      <h3 className="text-2xl mt-3 font-semibold leading-tight text-dark dark:text-light lg:text-3xl lg:leading-tight">
-        Enquire Now
-      </h3>
-      <ContactFormSubmit service={service.title} />
+        {/* Contact Form */}
+        <h3 className="text-2xl mt-3 font-semibold leading-tight text-dark dark: lg:text-3xl lg:leading-tight">
+          Enquire Now
+        </h3>
+        <p class="mt-2 text-muted dark:/70">Let's get started, Schedule a free consultation today.</p>
+        <ContactFormSubmit service={service.title} />
 
-      {service?.faqs.length > 0 && <hr />}
+        {service?.faqs.length > 0 && <hr />}
 
-      {/* FAQ Section */}
-      {service?.faqs.length > 0 &&
-      
-     ( <><h3 className="text-2xl font-semibold dark:text-light mt-10 lg:mt-10">
-      Frequently Asked Questions
-    </h3>
-      <FAQ data={service.faqs} />
-      </>
-      )
-      
-      }
+        {/* FAQ Section */}
+        {service?.faqs.length > 0 &&
 
-      {service?.faqs.length > 0 && <hr className='mt-10' />}
+          (<><h3 className="text-2xl font-semibold dark: mt-10 lg:mt-10">
+            Frequently Asked Questions
+          </h3>
+            <FAQ data={service.faqs} />
+          </>
+          )
 
-      {/* Related Services */}
-      {/* <div className="mt-10 lg:mt-14">
-        <h3 className="text-2xl font-semibold leading-tight text-dark dark:text-light lg:text-3xl lg:leading-tight">
+        }
+
+        {service?.faqs.length > 0 && <hr className='mt-10' />}
+
+        {/* Related Services */}
+        {/* <div className="mt-10 lg:mt-14">
+        <h3 className="text-2xl font-semibold leading-tight text-dark dark: lg:text-3xl lg:leading-tight">
           Popular Services
         </h3>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:mt-8">
@@ -178,7 +180,7 @@ export default async function Page({ params }) {
               </div>
               <div className="mt-6">
                 <h2 className="text-xl font-medium xl:text-2xl">
-                  <Link href={`/services/${related.slug}`} className="inline-block text-dark transition hover:text-primary dark:text-light/70 dark:hover:text-primary">
+                  <Link href={`/services/${related.slug}`} className="inline-block text-dark transition hover:text-primary dark:/70 dark:hover:text-primary">
                     {related.title}
                   </Link>
                 </h2>
@@ -187,7 +189,7 @@ export default async function Page({ params }) {
           ))}
         </div>
       </div> */}
-    </div>
+      </div>
     </>
   );
 }
