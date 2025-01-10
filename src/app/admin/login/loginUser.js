@@ -27,7 +27,7 @@ const loginUser = async (email, password) => {
       // Generate a JWT token using jose
       const token = await new SignJWT({ id: admin.id, email: admin.email })
         .setProtectedHeader({ alg: 'HS256' })
-        .setExpirationTime('1h')  // Token expiration time
+        .setExpirationTime('1d')  // Token expiration time
         .sign(new TextEncoder().encode(JWT_SECRET));  // Sign with the secret key
 
       return { success: true, token: token }; // Return token if login is successful

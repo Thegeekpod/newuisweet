@@ -45,14 +45,11 @@ const Services = async () => {
       <div className="flex flex-col-reverse items-start gap-6 lg:flex-row lg:gap-10">
         <div className="">
           <h2 className="text-2xl font-semibold text-dark dark:text-light">
-            Services We<span className="text-primary">Offered</span>
+            Services We<span className="text-primary"> Offered</span>
           </h2>
           <p className="mt-4 text-lg text-muted dark:text-light/70">
             Transforming Ideas into Innovative Reality, Elevate Your Vision with
-            Our Expert
-            <span className="font-semibold text-dark dark:text-white">
-              Product Design and Development
-            </span>
+            Our Expert Product Design and Development
             Services!
           </p>
         </div>

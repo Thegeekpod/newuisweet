@@ -10,13 +10,13 @@ const About_Section = () => {
             </h2>
             <p className="mt-4 text-lg text-muted dark:text-light/70">
               A Passionate{' '}
-              <span className="font-semibold text-dark dark:text-white">
+              
                 Full Stack Developer
-              </span>
-              🖥️ &amp;
-              <span className="font-semibold text-dark dark:text-white">
+              
+             {" "} 🖥️ {" "}
+             
                 Product Designer
-              </span>
+              
              
             </p>
           </div>
