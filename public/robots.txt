@@ -3,4 +3,4 @@ Disallow: /_next/
 Disallow: /api/
 Allow: /
 
-Sitemap: https://sweetdevelopers.com/
+Sitemap: https://sweetdevelopers.com/sitemap.xml
