@@ -64,20 +64,17 @@ export default function Header() {
 >
   {theme === 'dark' ? (
     <img
-    src="/whitefavicon.png"
+    src="/logo-white.png"
     alt="Sweet Developers"
-    className="h-6 w-6"
+    className="w-[230px]"
   />
   ):(<img
-    src="/favicon.png"
+    src="/logo-black.png"
     alt="Sweet Developers"
-    className="h-6 w-6"
+    className="w-[230px]"
   />)}
   
-  <span>
-    {" "}
-    Sweet<span className="text-primary"> Developers</span>{" "}
-  </span>
+  
 </Link>
 
           {/* Navigation menu */}
