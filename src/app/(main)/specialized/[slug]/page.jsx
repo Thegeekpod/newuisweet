@@ -1,6 +1,7 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import prisma from '../../../../../lib/prisma';
 import FAQ from '@/component/main/common/FAQ';
+import ContactFormSubmit from '@/component/main/pages/contact/ContactFormSubmit';
 
 export async function generateMetadata({ params }) {
   // Disable caching for this page
