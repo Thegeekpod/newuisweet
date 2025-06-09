@@ -135,9 +135,9 @@ export default async function Page({ params }) {
         <article className="max-w-full lg:mt-6 lg:text-justify">
           {/* <h1 className='text-2xl font-medium text-dark dark:text-light lg:text-2xl'>{service.title}</h1> */}
           <div className='prose-content max-w-full lg:text-justify'
-          dangerouslySetInnerHTML={{ __html: service.description }}
-        />
- 
+            dangerouslySetInnerHTML={{ __html: service.description }}
+          />
+
         </article>
 
         <hr className='mt-6' />
@@ -165,30 +165,7 @@ export default async function Page({ params }) {
 
         {service?.faqs.length > 0 && <hr className='mt-10' />}
 
-        {/* Related Services */}
-        {/* <div className="mt-10 lg:mt-14">
-        <h3 className="text-2xl font-semibold leading-tight text-dark dark:text-light lg:text-3xl lg:leading-tight">
-          Popular Services
-        </h3>
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:mt-8">
-          {relatedServices.map((related) => (
-            <div className="" key={related.id}>
-              <div className="relative">
-                <Link href={`/services/${related.slug}`} className="group block aspect-6/4 overflow-hidden rounded-lg">
-                  <img src={related.bannerImage} alt={related.title} className="h-full w-full rounded-lg object-cover transition duration-700 group-hover:scale-105" />
-                </Link>
-              </div>
-              <div className="mt-6">
-                <h2 className="text-xl font-medium xl:text-2xl">
-                  <Link href={`/services/${related.slug}`} className="inline-block text-dark transition hover:text-primary dark:text-light/70 dark:hover:text-primary">
-                    {related.title}
-                  </Link>
-                </h2>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
+      
       </div>
     </>
   );

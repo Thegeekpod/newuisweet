@@ -157,40 +157,57 @@ export default async function Page({ params }) {
   };
   const jsonSchema = JSON.stringify(schema);
   return (
-    <> <script
+    <> 
+    <script
     type="application/ld+json"
     dangerouslySetInnerHTML={{ __html: (data?.schema || jsonSchema) }}
   />
-    <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
-      <figure className="aspect-video overflow-hidden rounded-lg">
-        <img
-          src={data?.bannerImage}
-          alt={data?.title || "Blog Image"}
-          className="h-full w-full object-cover"
-        />
-      </figure>
-      <article className="prose mt-6 dark:prose-invert prose-headings:font-medium prose-blockquote:border-primary lg:mt-10">
-      {/* <h1 className='text-2xl font-medium text-dark dark:text-light lg:text-2xl'>{data?.title}</h1> */}
-        <div className='prose-content max-w-full'
-          dangerouslySetInnerHTML={{ __html: data?.description }}
-        />
-      </article>
+         <div className="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
+        {/* Banner Image */}
+        <figure className="aspect-video overflow-hidden rounded-lg">
+          <img
+            src={data.bannerImage}
+            alt={data.title || "Service Image"}
+            className="h-full w-full object-cover"
+          />
+        </figure>
 
-      {data?.faqs.length > 0 && (
-        <>
-          <hr />
-          <h3 className="text-2xl font-semibold dark:text-light mt-10 lg:mt-10">
-      Frequently Asked Questions
-    </h3>
-     
-          <FAQ data={data?.faqs} />
-          <hr className='mt-10' />
-        </>
-      )}
+        {/* Service Description */}
+        <article className="max-w-full lg:mt-6 lg:text-justify">
+          {/* <h1 className='text-2xl font-medium text-dark dark:text-light lg:text-2xl'>{data.title}</h1> */}
+          <div className='prose-content max-w-full lg:text-justify'
+            dangerouslySetInnerHTML={{ __html: data.description }}
+          />
 
-      {/* Add structured data for SEO */}
-     
-    </div>
+        </article>
+
+        <hr className='mt-6' />
+
+        {/* Contact Form */}
+        <h3 className="text-2xl mt-3 font-semibold leading-tight text-dark dark:text-light/70 lg:text-3xl lg:leading-tight">
+          Enquire Now
+        </h3>
+        <p class="mt-2 text-muted dark:text-light/70">Let{"'"}s get started, Schedule a free consultation today.</p>
+        <ContactFormSubmit service={data.title} />
+
+        {data?.faqs.length > 0 && <hr />}
+
+        {/* FAQ Section */}
+        {data?.faqs.length > 0 &&
+
+          (<><h3 className="text-2xl font-semibold dark:text-light/70 mt-10 lg:mt-10">
+            Frequently Asked Questions
+          </h3>
+            <FAQ data={data.faqs} />
+          </>
+          )
+
+        }
+
+        {data?.faqs.length > 0 && <hr className='mt-10' />}
+
+        
+      </div>
     </>
   );
 }
