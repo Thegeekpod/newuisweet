@@ -31,7 +31,7 @@ const Intro = () => {
         {/* CTA buttons */}
         <div className="mt-6 flex flex-wrap gap-2">
           <a
-            href="tel:+918918789119"
+            href="/contact-us"
             className="inline-flex items-center gap-x-1 lg:gap-x-2 rounded-lg border border-transparent bg-primary lg:px-6 px-2 py-4 font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50"
           >
             <svg
@@ -48,7 +48,7 @@ const Intro = () => {
             </svg>
             <span>Make a call</span>
           </a>
-          <a href='https://wa.me/+918918789119' target='_blank' rel='noopener noreferrer' className=" inline-flex items-center gap-x-1 lg:gap-x-2 rounded-lg border bg-lime-50 border-light bg-transparent lg:px-6 px-2 py-4 font-medium text-dark transition [--trigger:focus] hover:text-white hover:bg-lime-500 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:text-light/70 dark:hover:bg-dark dark:hover:text-white">
+          <a href='#' target='_blank' rel='noopener noreferrer' className=" inline-flex items-center gap-x-1 lg:gap-x-2 rounded-lg border bg-lime-50 border-light bg-transparent lg:px-6 px-2 py-4 font-medium text-dark transition [--trigger:focus] hover:text-white hover:bg-lime-500 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:text-light/70 dark:hover:bg-dark dark:hover:text-white">
            
            <FaWhatsapp className="h-6 w-6" />
             <span>WhatsApp</span>
